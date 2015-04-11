@@ -1,5 +1,5 @@
 # youtube polling
-# Key = 'AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ'
+youtube_key = 'AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ'
 # get comments
 # https://gdata.youtube.com/feeds/api/videos/AJDUHq2mJx0/comments?start-index=26&max-results=25
 
@@ -104,7 +104,27 @@ locInterval .9, ->
 
           next()
       ), (err, finish) ->
-        console.log entries, '123'
+        entry_keys = Object.keys(entries)
+        async.eachSeries entry_keys, ((index, next) ->
+          do =>
+            entry = entries[index]
+            sub_entry_keys = Object.keys(entry)
+            async.eachSeries sub_entry_keys, ((sub_entry_index, sub_next) ->
+              do =>
+                sub_entry = entry[sub_entry_index]
+                {name, text, image_link, total} = sub_entry
+
+                if text.indexOf('?') != -1 and total.yt$replyCount.$t != 0
+                  id = total.id.$t.match(/comments(.+)$/)?[1]
+                  $.getJSON "https://www.googleapis.com/plus/v1/activities/z134vxrx2wvxihnlt23tyj453yuryr2w104/comments?key=#{youtube_key}", (data) =>
+                    entries[index][sub_entry_index].reply = data?.items[0]
+                    sub_next()
+                else
+                  sub_next()
+            ), (err, finish) ->
+              next()
+        ), (err, finish) ->
+          console.log entries, '123', 'WAKKA'
 
     getComments()
 
