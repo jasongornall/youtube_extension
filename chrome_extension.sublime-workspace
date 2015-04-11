@@ -1,0 +1,1357 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"content",
+				"contentDetails"
+			],
+			[
+				"r",
+				"relative"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"v",
+				"visible"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"color",
+				"colorpicker"
+			],
+			[
+				"can",
+				"canvas_data"
+			],
+			[
+				"pa",
+				"partial_data"
+			],
+			[
+				"re",
+				"return_stuff"
+			],
+			[
+				"s",
+				"selected"
+			],
+			[
+				"tr",
+				"transparent"
+			],
+			[
+				"eas",
+				"ease-in"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"vide",
+				"video-player"
+			],
+			[
+				"mobi",
+				"mobile-nav"
+			],
+			[
+				"a",
+				"absolute"
+			],
+			[
+				"wel",
+				"welcome_callback"
+			],
+			[
+				"sub",
+				"sub_links"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"rend",
+				"renderPage"
+			],
+			[
+				"welcom",
+				"welcome_screen"
+			],
+			[
+				"active",
+				"activePlayer"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"backg",
+				"background"
+			],
+			[
+				"passe",
+				"passed_options"
+			],
+			[
+				"pas",
+				"passed_options"
+			],
+			[
+				"wrap",
+				"wrapper_id"
+			],
+			[
+				"use",
+				"user_name"
+			],
+			[
+				"fis",
+				"f_disabled"
+			],
+			[
+				"fade",
+				"fadeIn"
+			],
+			[
+				"fae",
+				"fadeIn"
+			],
+			[
+				"fad",
+				"fadeOut"
+			],
+			[
+				"togg",
+				"toggleClass"
+			],
+			[
+				"video",
+				"video_wrapper"
+			],
+			[
+				"foo",
+				"footer_items"
+			],
+			[
+				"broad",
+				"broadcast_channel"
+			],
+			[
+				"er",
+				"errorCount"
+			],
+			[
+				"broadcast",
+				"broadcast-list"
+			],
+			[
+				"bo",
+				"border-box"
+			],
+			[
+				"twt",
+				"twitch_video"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"win",
+				"win_height"
+			],
+			[
+				"coll",
+				"collection_slug"
+			],
+			[
+				"cu",
+				"currentTarget"
+			],
+			[
+				"twitc",
+				"twitch_live"
+			],
+			[
+				"switc",
+				"switch_new"
+			],
+			[
+				"flash",
+				"flashDisabled"
+			],
+			[
+				"pl",
+				"playerVersion"
+			],
+			[
+				"lin",
+				"line-height"
+			],
+			[
+				"cus",
+				"custom_js"
+			],
+			[
+				"exi",
+				"exists"
+			],
+			[
+				"tog",
+				"toggleClass"
+			],
+			[
+				"ifra",
+				"iframes"
+			],
+			[
+				"youtube",
+				"youtube_video"
+			],
+			[
+				"us",
+				"user_name"
+			],
+			[
+				"get",
+				"getTrustScore"
+			],
+			[
+				"stri",
+				"stringify"
+			],
+			[
+				"str",
+				"stringify"
+			],
+			[
+				"index",
+				"indexOf"
+			],
+			[
+				"temp",
+				"temp_words"
+			],
+			[
+				"TRU",
+				"trust_score"
+			],
+			[
+				"trus",
+				"trust_score"
+			],
+			[
+				"user",
+				"user_name"
+			],
+			[
+				"tru",
+				"trust_score"
+			],
+			[
+				"fa",
+				"favorite_subreddit"
+			],
+			[
+				"post",
+				"posts_per_month"
+			],
+			[
+				"comments",
+				"comments_per_month"
+			],
+			[
+				"fav",
+				"favorite_word"
+			],
+			[
+				"gil",
+				"gilded_comments"
+			],
+			[
+				"word",
+				"words_data"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"broadc",
+				"broadcast-pop"
+			],
+			[
+				"panel",
+				"panel_set"
+			],
+			[
+				"ps",
+				"position"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"overf",
+				"overflow-y"
+			],
+			[
+				"first",
+				"first_channel"
+			],
+			[
+				"has",
+				"hasClass"
+			],
+			[
+				"f",
+				"full-screen"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"auto",
+				"autohide-video-footer"
+			],
+			[
+				"all",
+				"all_day"
+			],
+			[
+				"cur",
+				"current_channel"
+			],
+			[
+				"un",
+				"unmute"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"you",
+				"youku_video"
+			],
+			[
+				"youku",
+				"youku_video"
+			],
+			[
+				"seek",
+				"seekTo"
+			],
+			[
+				"ykou",
+				"youku_video"
+			],
+			[
+				"out",
+				"outerCount"
+			],
+			[
+				"ri",
+				"ribbon"
+			],
+			[
+				"paddin",
+				"padding-on"
+			],
+			[
+				"thea",
+				"theater-mode"
+			],
+			[
+				"ret",
+				"return_data"
+			],
+			[
+				"mob",
+				"mobile_height"
+			],
+			[
+				"twitch",
+				"twitch_video"
+			],
+			[
+				"cal",
+				"calendar"
+			],
+			[
+				"side",
+				"side_content"
+			],
+			[
+				"hub",
+				"hub_channel"
+			],
+			[
+				"ext",
+				"extra_params"
+			],
+			[
+				"url",
+				"url_data"
+			],
+			[
+				"old",
+				"old_stages"
+			],
+			[
+				"vas",
+				"vast_url"
+			],
+			[
+				"player",
+				"player_id"
+			],
+			[
+				"twee",
+				"tweet_text"
+			],
+			[
+				"no",
+				"no_action"
+			],
+			[
+				"tweet",
+				"tweet_action"
+			],
+			[
+				"link",
+				"link_action"
+			],
+			[
+				"chan",
+				"channel_data"
+			],
+			[
+				"live",
+				"livestreamNew"
+			],
+			[
+				"channe",
+				"channel_id"
+			],
+			[
+				"jw",
+				"jwplayer"
+			],
+			[
+				"getP",
+				"getPosition"
+			],
+			[
+				"anc",
+				"anchor"
+			],
+			[
+				"var",
+				"variables_2"
+			],
+			[
+				"anch",
+				"anchor"
+			],
+			[
+				"pop",
+				"popped_varb"
+			],
+			[
+				"jso",
+				"json_response"
+			],
+			[
+				"obj",
+				"obj_to_add"
+			],
+			[
+				"swit",
+				"switched_item"
+			],
+			[
+				"data",
+				"data_array"
+			],
+			[
+				"arr",
+				"array_ref"
+			],
+			[
+				"edi",
+				"editor_title"
+			],
+			[
+				"call",
+				"callbacks"
+			],
+			[
+				"ca",
+				"callbacks"
+			],
+			[
+				"is",
+				"is_changed"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "dom/background.coffee",
+			"settings":
+			{
+				"buffer_size": 1724,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"last_filter": "Package Control: remo",
+		"selected_items":
+		[
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ht",
+				"HTMLPrettify"
+			],
+			[
+				"git che",
+				"Git: Checkout Current File"
+			],
+			[
+				"git bl",
+				"Git: Blame"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			],
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"set syntax json",
+				"Set Syntax: JSON"
+			],
+			[
+				"git  ch",
+				"Git: Checkout Current File"
+			],
+			[
+				"htm",
+				"HTMLPrettify"
+			],
+			[
+				"set syntax coffee",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"set syntax co",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"set syntax js",
+				"Set Syntax: JSON"
+			],
+			[
+				"html ",
+				"HTMLPrettify"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"html p",
+				"HTMLPrettify"
+			],
+			[
+				"set syntax php",
+				"Set Syntax: PHP"
+			],
+			[
+				"set syntax act",
+				"Set Syntax: ActionScript"
+			],
+			[
+				"git reset",
+				"Git: Reset (hard) HEAD"
+			],
+			[
+				"git b",
+				"Git: Blame"
+			],
+			[
+				"gi",
+				"Git: Commit history"
+			],
+			[
+				"git ch",
+				"Git: Checkout Current File"
+			],
+			[
+				"git he",
+				"Git: Checkout Current File"
+			],
+			[
+				"html pre",
+				"HTMLPrettify"
+			],
+			[
+				"set syntax java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"GIT CHE",
+				"Git: Checkout Current File"
+			],
+			[
+				"trailing",
+				"Trailing Spaces: Toggle Trailing Spaces Highlighting"
+			],
+			[
+				"set syntax ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"disabl",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Disable Package"
+			],
+			[
+				"disabled",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"disab",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"enabled",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"disable",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"git  he",
+				"Git: Checkout Current File"
+			],
+			[
+				"set syntax html",
+				"Set Syntax: HTML"
+			],
+			[
+				"git bla",
+				"Git: Blame"
+			],
+			[
+				"git ",
+				"Git: Graph All"
+			],
+			[
+				"git l",
+				"Git: Log All"
+			],
+			[
+				"setsyntax html",
+				"Set Syntax: HTML"
+			],
+			[
+				"gitche",
+				"Git: Checkout Current File"
+			],
+			[
+				"GIT  CHE",
+				"Git: Checkout Current File"
+			],
+			[
+				"compile",
+				"Stylus: Compile File"
+			],
+			[
+				"compl",
+				"Stylus: Compile File"
+			],
+			[
+				"git dif",
+				"Git: Diff All Files"
+			],
+			[
+				"disa",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"ruler",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"cursor",
+				"CursorRuler: Toggle Enabled/Disabled"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"comp",
+				"Coffee: Compile File"
+			],
+			[
+				"coffee c",
+				"Coffee: Compile File"
+			],
+			[
+				"instll",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 521.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/User/CoffeeCompile.sublime-settings",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/dom/background.js",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/build.stuff",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/dom/manifest.json",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/dom/basic.css",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/dom/basic.styl",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/CoffeeCompile/CoffeeCompile.sublime-settings",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/CoffeeCompile/Keymaps/Default (OSX).sublime-keymap",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/User/CoffeeScript.sublime-settings",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/User/Stylus.sublime-settings",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/chrome_extension.sublime-project",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/dom/background.coffee",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/Better CoffeeScript/CoffeeScript.sublime-settings",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/Stylus/Stylus.sublime-settings",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/dom/src/test.styl",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/dom/src/test.css",
+		"/Users/jasongornall/Downloads/icon.png",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/redder/background.js",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/jason_test/manifest.json",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/trollFaces/manifest.json",
+		"/Users/jasongornall/Downloads/dom/manifest.json",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/trollFaces/jquery.min.js",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/trollFaces/contentscript.js",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/trollFaces/basic.css",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/Better CoffeeScript/Keymaps/Default (OSX).sublime-keymap",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/jason_test/contentscript.js",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/jason_test/script.js",
+		"/Users/jasongornall/Downloads/stylizr/popup.js",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/redder/manifest.json",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/jason/stylesheets/index.styl",
+		"/Users/jasongornall/Desktop/Websites/chrome_extension/mainifest.json",
+		"/Users/jasongornall/Downloads/popup (2).html",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/jquery-video-player/3.0.0/main.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/presenters/canvas.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/stylesheets/index.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/player.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/navigation.styl",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/api/api.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/app/main.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/hub_video_footer.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/1.1.0/presenters/footer.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/1.0.0/templates/panel-twitch_chat.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/partials/simplePartials.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/player.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/sidebar.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/panel.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style/hub_panels.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/presenters/hub_channel.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/hub_hack.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style/hub.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/panels.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/hm/2.1.0/templates/hub_video_footer.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/admin.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/variables.styl",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/core/BasePresenter.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/jason/presenters/testing.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/library/spectrum/spectrum.js",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/library/spectrum/spectrum.css",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/.gitignore",
+		"/Users/jasongornall/Desktop/data.png",
+		"/Users/jasongornall/Desktop/Websites/nodejs/.gitignore",
+		"/Users/jasongornall/Desktop/Websites/nodejs/server.coffee",
+		"/Users/jasongornall/Desktop/Lessthan3/packages/pkg/coffeecup/0.3.17/CHANGELOG.md",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/presenters/main.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/library/jq.color.js",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/library/ui.colorpicker.css",
+		"/Users/jasongornall/Desktop/Websites/nodejs/test.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/package.json",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/schema/player.cson",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/footer.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/channel.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/imports.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/fancybox.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/channel-select.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/navigation.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/sidebar.styl",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/mentor.coffee",
+		"/Users/jasongornall/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/hub_calender.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/admin.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/channel.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/navigation.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/config.cson",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/mobile-nav.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/electric-daisy-carnival/4.0.0/presenters/header.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/application.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/electric-daisy-carnival/4.0.0/style/sidebar.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/mobile-nav.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/electric-daisy-carnival/4.0.0/templates/application.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/sidebar.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/templates/hub_panel_set.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/panel_events.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/schema/channel.cson",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/testing/views/testing.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/testing/stylesheets/index.css",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/testing/stylesheets/index.styl",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio/views/main.coffee",
+		"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/testing/partials/simplePartials.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/presenters/hub.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/channel.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/content.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/presenters/hub_calendar.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/dobi-editor/3.1.0/main.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/schema/channel.cson",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/schema/hub.cson",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/admin-table.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/templates/hub_channel.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/1.2.0/presenters/hub.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/1.2.0/presenters/panels.coffee",
+		"/Users/jasongornall/Desktop/RedditBot/redditServer/trollabot/user_anaylzer.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates/player.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/background.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/background.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters/panel_now_playing.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/jquery-video-player/2.0.0/main.coffee",
+		"/Users/jasongornall/Downloads/TurboTaxReturn.tax2012",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/capcom/1.0.0/presenters/hub_channel.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style/imports.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/lt3-admin/2.5.0/style/main.styl",
+		"/Users/jasongornall/Desktop/RedditBot/redditServer/trollabot/utils.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/lt3-chat/4.1.0/presenters/main.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style/hub_overlays.styl",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/schema/video.cson",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/schema/ad.cson",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/dobi-editor/3.2.0/main.coffee",
+		"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/presenters/hub_admin.coffee"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/hm/2.1.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/Websites/nodejs/public/apps",
+			"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio",
+			"/Users/jasongornall/Desktop/Lessthan3/packages",
+			"/Users/jasongornall/Desktop/Websites/nodejs/public/apps/portfolio",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/electric-daisy-carnival/4.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/electric-daisy-carnival/4.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/electric-daisy-carnival/4.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/electric-daisy-carnival/4.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/templates",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/RedditBot",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/1.2.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/1.2.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/templates",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/jquery-video-player/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/schema",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/1.2.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/schema",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/RedditBot/redditServer",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/schema",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/jquery-video-player",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/dobi-editor",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/3.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/hm/2.1.0/style",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/hm/2.1.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/maestro/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/jquery-video-player/2.0.0",
+			"/Users/jasongornall/Desktop/LessThan3",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/artist-hq/4.2.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/dobi-editor",
+			"/Users/jasongornall/Desktop/LessThan3/packages",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/artist-hq",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/artist-hq/4.2.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/lt3-admin/2.3.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/lt3-admin",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/lt3-admin/2.3.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/artist-hq/4.2.0",
+			"/Users/jasongornall/Desktop/LessThan3/packages",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/capcom/1.0.0/presenters",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/jquery-video-player",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg/capcom",
+			"/Users/jasongornall/Desktop/LessThan3/packages/pkg"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"window",
+			"Teacup",
+			"compile",
+			"getYoutubePlayerVars",
+			"youtube",
+			"'id,duration'",
+			"only_embeddable",
+			"fields",
+			"metaData",
+			"youtube_playlist",
+			"fields",
+			"getDurations",
+			"getDuration",
+			"volume-off",
+			"volume",
+			".menu",
+			"onShareMenu",
+			"share",
+			"rotate",
+			"canvas",
+			"iframe",
+			"channel_select",
+			"data-active",
+			"sel_href",
+			"$('.channel-select').find('.page.active').attr('href')",
+			"console.log \"/#{page.slug}\" is sel_href",
+			"active",
+			"data-active",
+			"cls",
+			"=.+if",
+			"appendToSidebar",
+			"loaded",
+			"callback",
+			"appendToSidebar",
+			"after:render",
+			"loaded",
+			"@package.Presenters",
+			"active",
+			"console.log 'panda'",
+			"onShowChannelSelect",
+			"// no volume control on mobile ios",
+			"volume",
+			"channel-select",
+			"channel",
+			"rotate vertical ",
+			"rotate",
+			"text-align",
+			"footer",
+			"custom-content",
+			"open-nav",
+			"setupVideoFooter",
+			"footer",
+			"unmute",
+			"mute",
+			"volume-up",
+			"onToggleTheaterMode",
+			"updateAdminControls",
+			"updateAdminControls\nupdateAdminControls",
+			"updateAdminControls",
+			"lt3.object",
+			"onToggleTheaterMode",
+			"theater-mode",
+			"renderFullScreen",
+			"theater-mode",
+			"full-screen",
+			"fullscreen-mobile",
+			"mobile",
+			".loader-wrapper",
+			"loader = @setupVideoLoader {is_pip, message, spot}",
+			"setupVideoLoader",
+			"sk-spinner",
+			"loader",
+			"line-height",
+			"#application.compact.padding-on #player",
+			"nav-on",
+			"compact_player_height",
+			"compact",
+			"padding_size",
+			"$compact_player_height",
+			"compact_player_height",
+			"150px",
+			"360px",
+			"360",
+			"vertical-align middle",
+			"margin-top 10px",
+			"ready: =>",
+			"sk-spinner-wave",
+			".sk-spinner-wave",
+			"sk-spinner",
+			"setupVideoLoader",
+			"ready =>",
+			"compact",
+			"height",
+			"console.log",
+			"LOADED",
+			"APPLE",
+			"canvas",
+			"console.log",
+			"findById",
+			"teacup.render",
+			"script ->",
+			"partials",
+			"channel",
+			"result.app",
+			"afterRender",
+			"include_once",
+			"SampleApp",
+			"terminator",
+			"populateCache",
+			"fs",
+			"listen",
+			"http",
+			"listen",
+			"express",
+			"server",
+			"?",
+			"setupVideoLoader",
+			"sk-spinner",
+			"setupVideoLoader",
+			"setupVideoL",
+			"loading",
+			"region",
+			".fancybox-skin",
+			"fancybox",
+			"instagram",
+			"prev",
+			"objectLoading",
+			"loadPage"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"800",
+			"v2-1-0",
+			"'lt3-uploader': '1.1.0'",
+			"right-ribbon",
+			"channel_select",
+			"admin_slide_width",
+			"dobi.json.parse",
+			"ustream_video",
+			"twitch_channel",
+			"channel_select",
+			"ustream",
+			"welcome-screen",
+			"welcome-screen-mobile",
+			"admin-hide",
+			"vod-playlist"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "dom/background.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								849,
+								849
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.coffeecompile_output":
+	{
+		"height": 395.0
+	},
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 205.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "chrome_extension.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"nodejs/public/apps/jason/stylesheets/index.styl"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 291.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

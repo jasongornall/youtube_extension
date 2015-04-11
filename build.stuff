@@ -1,0 +1,14 @@
+//turn this on when working on chrome_extension
+
+CoffeeScript.sublime-settings
+{
+  "binDir": "/usr/local/bin",
+  "noWrapper": false,
+  "compileOnSave": true
+}
+
+Stylus.sublime-settings
+{
+  "compileOnSave": true
+}
+
