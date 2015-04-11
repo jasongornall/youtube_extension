@@ -29,22 +29,6 @@
     return seconds;
   };
 
-  $("#content").prepend(teacup.render(((function(_this) {
-    return function() {
-      return div('#overlay-wrapper', function() {
-        div('.images');
-        return div('.comment', function() {
-          img({
-            src: 'https://gp3.googleusercontent.com/-pmGKuLJC7qU/AAAAAAAAAAI/AAAAAAAAABg/aItmNTS9xEY/s48-c-k-no/photo.jpg'
-          });
-          return span(function() {
-            return 'The stuff he starts playing at 9:47 and onwards. Could someone please give me some advice to learning this style? books?﻿';
-          });
-        });
-      });
-    };
-  })(this))));
-
   current_time = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-current');
 
   duration = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-duration');
@@ -53,6 +37,27 @@
 
   locInterval(1, function() {
     var current_seconds;
+    if ($("#content").length) {
+      if ($("#content #overlay-wrapper").length) {
+        return;
+      }
+      console.log("INITIALIZED");
+      $("#content").prepend(teacup.render(((function(_this) {
+        return function() {
+          return div('#overlay-wrapper', function() {
+            div('.images');
+            return div('.comment', function() {
+              img({
+                src: 'https://gp3.googleusercontent.com/-pmGKuLJC7qU/AAAAAAAAAAI/AAAAAAAAABg/aItmNTS9xEY/s48-c-k-no/photo.jpg'
+              });
+              return span(function() {
+                return 'The stuff he starts playing at 9:47 and onwards. Could someone please give me some advice to learning this style? books?﻿';
+              });
+            });
+          });
+        };
+      })(this))));
+    }
     console.log('BEFORE', current_time.text());
     current_seconds = timeToSeconds(current_time.text());
     return console.log($('a[rel="nofollow"]'));
