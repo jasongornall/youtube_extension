@@ -35,6 +35,9 @@ renderComment = (data) =>
       div '.comment', ->
         div -> data[0]?.name
         span -> data[0]?.text
+      if data[0]?.reply?.object?.content
+        div -> raw "answer: #{data[0]?.reply?.object?.content}"
+
   )
 
 # bug here need a waiting script
@@ -114,7 +117,7 @@ locInterval .9, ->
               sub_entry = entries[index][index_2]
               {name, text, image_link, total} = sub_entry
               console.log 'THE HELL?'
-              if text.indexOf('?') != -1 and total.yt$replyCount.$t != 0
+              if /\?|song/.test(text) and total.yt$replyCount.$t != 0
                 id = total.id.$t.match(/comments(.+)$/)?[1]
                 console.log id, 'ID WOOO'
                 $.getJSON "https://www.googleapis.com/plus/v1/activities#{id}/comments?key=#{youtube_key}", (data) =>

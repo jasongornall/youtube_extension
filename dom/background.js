@@ -38,7 +38,8 @@
       console.log('render', data);
       return $("#content > #overlay-wrapper").html(teacup.render((function() {
         return div('#overlay-wrapper', function() {
-          return div('.comment', function() {
+          var _ref, _ref1, _ref2;
+          div('.comment', function() {
             div(function() {
               var _ref;
               return (_ref = data[0]) != null ? _ref.name : void 0;
@@ -48,6 +49,12 @@
               return (_ref = data[0]) != null ? _ref.text : void 0;
             });
           });
+          if ((_ref = data[0]) != null ? (_ref1 = _ref.reply) != null ? (_ref2 = _ref1.object) != null ? _ref2.content : void 0 : void 0 : void 0) {
+            return div(function() {
+              var _ref3, _ref4, _ref5;
+              return raw("answer: " + ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0));
+            });
+          }
         });
       })));
     };
@@ -155,7 +162,7 @@
                     sub_entry = entries[index][index_2];
                     name = sub_entry.name, text = sub_entry.text, image_link = sub_entry.image_link, total = sub_entry.total;
                     console.log('THE HELL?');
-                    if (text.indexOf('?') !== -1 && total.yt$replyCount.$t !== 0) {
+                    if (/\?|song/.test(text) && total.yt$replyCount.$t !== 0) {
                       id = (_ref = total.id.$t.match(/comments(.+)$/)) != null ? _ref[1] : void 0;
                       console.log(id, 'ID WOOO');
                       return $.getJSON("https://www.googleapis.com/plus/v1/activities" + id + "/comments?key=" + youtube_key, function(data) {
