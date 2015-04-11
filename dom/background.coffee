@@ -43,15 +43,20 @@ duration = $('#movie_player > div.html5-video-controls > div.html5-player-chrome
 
 entries = []
 main_video_id = youtube_video.exec(window.location.href)[4]
+
+
+initalized = false
 locInterval .01, ->
   return unless $("#content").length
 
   # initilization
   video_id = youtube_video.exec(window.location.href)[4]
   if video_id isnt main_video_id
-    $("#content #overlay-wrapper").remove()
+   initalized = false
 
-  if not $("#content #overlay-wrapper").length
+  if not initalized
+    initalized = true
+    console.log 'INITIALIZED'
     main_video_id = youtube_video.exec(window.location.href)[4]
 
     $("#content").prepend teacup.render ( =>
