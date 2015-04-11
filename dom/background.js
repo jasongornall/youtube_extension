@@ -142,36 +142,35 @@
               };
             })(this));
           }), function(err, finish) {
-            var entry_keys;
-            entry_keys = Object.keys(entries);
-            return async.eachSeries(entry_keys, (function(index, next) {
-              return (function(_this) {
-                return function() {
-                  var entry, sub_entry_keys;
-                  entry = entries[index];
-                  sub_entry_keys = Object.keys(entry);
-                  return async.eachSeries(sub_entry_keys, (function(sub_entry_index, sub_next) {
-                    return (function(_this) {
-                      return function() {
-                        var id, image_link, name, sub_entry, text, total, _ref;
-                        sub_entry = entry[sub_entry_index];
-                        name = sub_entry.name, text = sub_entry.text, image_link = sub_entry.image_link, total = sub_entry.total;
-                        if (text.indexOf('?') !== -1 && total.yt$replyCount.$t !== 0) {
-                          id = (_ref = total.id.$t.match(/comments(.+)$/)) != null ? _ref[1] : void 0;
-                          return $.getJSON("https://www.googleapis.com/plus/v1/activities/z134vxrx2wvxihnlt23tyj453yuryr2w104/comments?key=" + youtube_key, function(data) {
-                            entries[index][sub_entry_index].reply = data != null ? data.items[0] : void 0;
-                            return sub_next();
-                          });
-                        } else {
-                          return sub_next();
-                        }
-                      };
-                    })(this)();
-                  }), function(err, finish) {
-                    return next();
-                  });
-                };
-              })(this)();
+            var keys_1;
+            keys_1 = Object.keys(entries);
+            return async.each(keys_1, (function(index, outer_next) {
+              var entry, keys_2;
+              entry = entries[index];
+              keys_2 = Object.keys(entry);
+              return async.each(keys_2, (function(index_2, sub_next) {
+                return (function(_this) {
+                  return function() {
+                    var id, image_link, name, sub_entry, text, total, _ref;
+                    sub_entry = entries[index][index_2];
+                    name = sub_entry.name, text = sub_entry.text, image_link = sub_entry.image_link, total = sub_entry.total;
+                    console.log('THE HELL?');
+                    if (text.indexOf('?') !== -1 && total.yt$replyCount.$t !== 0) {
+                      id = (_ref = total.id.$t.match(/comments(.+)$/)) != null ? _ref[1] : void 0;
+                      console.log(id, 'ID WOOO');
+                      return $.getJSON("https://www.googleapis.com/plus/v1/activities" + id + "/comments?key=" + youtube_key, function(data) {
+                        sub_entry.reply = data != null ? data.items[0] : void 0;
+                        return sub_next();
+                      });
+                    } else {
+                      return sub_next();
+                    }
+                  };
+                })(this)();
+              }), function(err, finish) {
+                console.log("WAHT");
+                return outer_next();
+              });
             }), function(err, finish) {
               return console.log(entries, '123', 'WAKKA');
             });

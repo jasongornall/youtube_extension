@@ -104,25 +104,27 @@ locInterval .9, ->
 
           next()
       ), (err, finish) ->
-        entry_keys = Object.keys(entries)
-        async.eachSeries entry_keys, ((index, next) ->
-          do =>
-            entry = entries[index]
-            sub_entry_keys = Object.keys(entry)
-            async.eachSeries sub_entry_keys, ((sub_entry_index, sub_next) ->
-              do =>
-                sub_entry = entry[sub_entry_index]
-                {name, text, image_link, total} = sub_entry
+        keys_1 = Object.keys(entries)
+        async.each keys_1, ((index, outer_next) ->
+          entry = entries[index]
 
-                if text.indexOf('?') != -1 and total.yt$replyCount.$t != 0
-                  id = total.id.$t.match(/comments(.+)$/)?[1]
-                  $.getJSON "https://www.googleapis.com/plus/v1/activities/z134vxrx2wvxihnlt23tyj453yuryr2w104/comments?key=#{youtube_key}", (data) =>
-                    entries[index][sub_entry_index].reply = data?.items[0]
-                    sub_next()
-                else
+          keys_2 = Object.keys(entry)
+          async.each keys_2, ((index_2, sub_next) ->
+            do =>
+              sub_entry = entries[index][index_2]
+              {name, text, image_link, total} = sub_entry
+              console.log 'THE HELL?'
+              if text.indexOf('?') != -1 and total.yt$replyCount.$t != 0
+                id = total.id.$t.match(/comments(.+)$/)?[1]
+                console.log id, 'ID WOOO'
+                $.getJSON "https://www.googleapis.com/plus/v1/activities#{id}/comments?key=#{youtube_key}", (data) =>
+                  sub_entry.reply = data?.items[0]
                   sub_next()
-            ), (err, finish) ->
-              next()
+              else
+                sub_next()
+          ), (err, finish) ->
+            console.log "WAHT"
+            outer_next()
         ), (err, finish) ->
           console.log entries, '123', 'WAKKA'
 
