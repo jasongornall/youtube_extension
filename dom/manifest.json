@@ -11,6 +11,6 @@
   "content_scripts": [ {
     "matches": [ "http://*/*", "https://*/*"],
     "css": ["basic.css"],
-    "js": [ "jquery.min.js", "teacup.js", "background.js" ]
+    "js": [ "jquery.min.js", "teacup.js", "async.min.js", "background.js" ]
   }]
 }

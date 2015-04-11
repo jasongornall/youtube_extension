@@ -33,16 +33,15 @@
 
   duration = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-duration');
 
-  console.log($('a[rel="nofollow"]'));
-
   locInterval(1, function() {
     var current_seconds;
-    if ($("#content").length) {
-      if ($("#content #overlay-wrapper").length) {
-        return;
-      }
+    if (!$("#content").length) {
+      return;
+    }
+    console.log($("#content #overlay-wrapper"), 'wtf');
+    if (!$("#content #overlay-wrapper").length) {
       console.log("INITIALIZED");
-      $("#content").prepend(teacup.render(((function(_this) {
+      return $("#content").prepend(teacup.render(((function(_this) {
         return function() {
           return div('#overlay-wrapper', function() {
             div('.images');
@@ -57,10 +56,11 @@
           });
         };
       })(this))));
+    } else {
+      console.log('BEFORE', current_time.text());
+      current_seconds = timeToSeconds(current_time.text());
+      return console.log($('a[rel="nofollow"]'));
     }
-    console.log('BEFORE', current_time.text());
-    current_seconds = timeToSeconds(current_time.text());
-    return console.log($('a[rel="nofollow"]'));
   });
 
 }).call(this);

@@ -25,11 +25,12 @@ timeToSeconds = (time) ->
 current_time = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-current')
 duration = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-duration')
 
-console.log $('a[rel="nofollow"]')
-
 locInterval 1, ->
-  if $("#content").length
-    return if $("#content #overlay-wrapper").length
+  return unless $("#content").length
+  # initilization
+
+  console.log $("#content #overlay-wrapper"), 'wtf'
+  if not $("#content #overlay-wrapper").length
     console.log "INITIALIZED"
     $("#content").prepend teacup.render ( =>
       div '#overlay-wrapper', ->
@@ -38,11 +39,11 @@ locInterval 1, ->
           img src: 'https://gp3.googleusercontent.com/-pmGKuLJC7qU/AAAAAAAAAAI/AAAAAAAAABg/aItmNTS9xEY/s48-c-k-no/photo.jpg'
           span -> 'The stuff he starts playing at 9:47 and onwards. Could someone please give me some advice to learning this style? books?﻿'
     )
+  else
 
-
-  console.log 'BEFORE', current_time.text()
-  current_seconds = timeToSeconds(current_time.text())
-  console.log $('a[rel="nofollow"]')
+    console.log 'BEFORE', current_time.text()
+    current_seconds = timeToSeconds(current_time.text())
+    console.log $('a[rel="nofollow"]')
 
 
 
