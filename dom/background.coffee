@@ -46,7 +46,8 @@ main_video_id = youtube_video.exec(window.location.href)[4]
 
 
 initalized = false
-locInterval .01, ->
+old_entry = null
+locInterval .9, ->
   return unless $("#content").length
 
   # initilization
@@ -111,8 +112,11 @@ locInterval .01, ->
 
   else
     current_seconds = timeToSeconds(current_time.text())
-    if entries[current_seconds]
-      renderComment entries[current_seconds]
+    console.log current_seconds, '3212323'
+    new_entry = entries[current_seconds]
+    if new_entry and old_entry isnt new_entry
+      old_entry = new_entry
+      renderComment new_entry
 
 
 
