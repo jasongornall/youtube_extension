@@ -46,6 +46,7 @@ renderComment = (data) =>
     $fadeIn.toggleClass('fadeIn fadeOut')
     $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
       $(this).remove()
+      old_entry = null
   ), 8000
 
 

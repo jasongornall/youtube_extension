@@ -68,7 +68,9 @@
         $fadeIn = $comment.find('.fadeIn');
         $fadeIn.toggleClass('fadeIn fadeOut');
         return $fadeIn.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-          return $(this).remove();
+          var old_entry;
+          $(this).remove();
+          return old_entry = null;
         });
       }), 8000);
     };
