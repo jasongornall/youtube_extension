@@ -31,14 +31,20 @@ timeToSeconds = (time) ->
 
 commentTemplate = (data) =>
   return teacup.render ( =>
-    span -> "#{data[0]?.name}: "
-    span -> data[0]?.text
-    if data[0]?.reply?.object?.content
-      div -> raw "answer: #{data[0]?.reply?.object?.content}"
+    div '.animated fadeIn', ->
+      span -> "#{data[0]?.name}: "
+      span -> data[0]?.text
+      if data[0]?.reply?.object?.content
+        div -> raw "answer: #{data[0]?.reply?.object?.content}"
   )
 renderComment = (data) =>
   console.log 'render', data
-  $("#player-api > #overlay-wrapper .comment").html commentTemplate data
+  $comment = $("#player-api > #overlay-wrapper .comment")
+  $comment.html commentTemplate data
+  setTimeout (->
+    $comment.find('.fadeIn').toggleClass('fadeIn fadeOut')
+  ), 8000
+
 
 # bug here need a waiting script
 current_time = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-current')
@@ -60,6 +66,7 @@ locInterval .9, ->
 
   if not initalized
     $("#player-api > #overlay-wrapper").remove()
+    $('html').removeClass('youtube-social')
     initalized = true
     console.log 'INITIALIZED'
     main_video_id = youtube_video.exec(window.location.href)[4]
@@ -98,6 +105,11 @@ locInterval .9, ->
           next()
       ), (err, finish) ->
         keys_1 = Object.keys(entries)
+
+        if keys_1.length
+          $('html').addClass('youtube-social')
+        else
+          $('html').removeClass('youtube-social')
         async.each keys_1, ((index, outer_next) ->
           entry = entries[index]
 
@@ -159,7 +171,7 @@ locInterval .9, ->
           $image.mouseleave (e) ->
             $el = $ e.currentTarget
             $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
-            $hover.empty()
+            $hover.find('.fadeIn').toggleClass('fadeIn fadeOut')
             $hover.siblings('.comment').show()
 
     $.getJSON "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{main_video_id}&key=#{youtube_key}", (data) =>

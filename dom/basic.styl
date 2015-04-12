@@ -1,42 +1,46 @@
-#player-api
-  margin-bottom 49px
-  #overlay-wrapper
-    position relative
-    width 100%
-    text-align center
-    .images
-      height 10px
-      .image
-        display inline-block
-        position absolute
-        &:hover
-          .image-hover
-            display block
-        > img
-          cursor pointer
-          width 10px
-          height 10px
+html.youtube-social
+  &[data-player-size="small"]
+    #watch7-sidebar
+      transform translate(0, -49px)
+  #player-api
+    margin-bottom 49px
+    #overlay-wrapper
+      position relative
+      width 100%
+      text-align center
+      .images
+        height 10px
+        .image
+          display inline-block
           position absolute
-        .image-hover
-          display none
-        .image-hover
-          position absolute
-          top -55px
-          z-index 1000000
-          width 50px
-          height 50px
-          border 1px solid black
+          &:hover
+            .image-hover
+              display block
           > img
-            width 48px
-            height 48px
-    .hover-comment:empty, .comment:empty
-      display none !important
-    .hover-comment, .comment
-      padding 5px
-    .comment-wrapper
-      margin 5px
-      display inline-block
-      text-align left
-      background gray
-      div, span, a
-        color black
+            cursor pointer
+            width 10px
+            height 10px
+            position absolute
+          .image-hover
+            display none
+          .image-hover
+            position absolute
+            top -55px
+            z-index 1000000
+            width 50px
+            height 50px
+            border 1px solid black
+            > img
+              width 48px
+              height 48px
+      .hover-comment:empty, .comment:empty
+        display none !important
+      .hover-comment, .comment
+        > div
+          padding 5px
+          margin 5px
+          display inline-block
+          text-align left
+          background gray
+          div, span, a
+            color black

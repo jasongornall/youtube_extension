@@ -36,29 +36,36 @@
   commentTemplate = (function(_this) {
     return function(data) {
       return teacup.render((function() {
-        var _ref, _ref1, _ref2;
-        span(function() {
-          var _ref;
-          return "" + ((_ref = data[0]) != null ? _ref.name : void 0) + ": ";
-        });
-        span(function() {
-          var _ref;
-          return (_ref = data[0]) != null ? _ref.text : void 0;
-        });
-        if ((_ref = data[0]) != null ? (_ref1 = _ref.reply) != null ? (_ref2 = _ref1.object) != null ? _ref2.content : void 0 : void 0 : void 0) {
-          return div(function() {
-            var _ref3, _ref4, _ref5;
-            return raw("answer: " + ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0));
+        return div('.animated fadeIn', function() {
+          var _ref, _ref1, _ref2;
+          span(function() {
+            var _ref;
+            return "" + ((_ref = data[0]) != null ? _ref.name : void 0) + ": ";
           });
-        }
+          span(function() {
+            var _ref;
+            return (_ref = data[0]) != null ? _ref.text : void 0;
+          });
+          if ((_ref = data[0]) != null ? (_ref1 = _ref.reply) != null ? (_ref2 = _ref1.object) != null ? _ref2.content : void 0 : void 0 : void 0) {
+            return div(function() {
+              var _ref3, _ref4, _ref5;
+              return raw("answer: " + ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0));
+            });
+          }
+        });
       }));
     };
   })(this);
 
   renderComment = (function(_this) {
     return function(data) {
+      var $comment;
       console.log('render', data);
-      return $("#player-api > #overlay-wrapper .comment").html(commentTemplate(data));
+      $comment = $("#player-api > #overlay-wrapper .comment");
+      $comment.html(commentTemplate(data));
+      return setTimeout((function() {
+        return $comment.find('.fadeIn').toggleClass('fadeIn fadeOut');
+      }), 8000);
     };
   })(this);
 
@@ -85,6 +92,7 @@
     }
     if (!initalized) {
       $("#player-api > #overlay-wrapper").remove();
+      $('html').removeClass('youtube-social');
       initalized = true;
       console.log('INITIALIZED');
       main_video_id = youtube_video.exec(window.location.href)[4];
@@ -138,6 +146,11 @@
           }), function(err, finish) {
             var keys_1;
             keys_1 = Object.keys(entries);
+            if (keys_1.length) {
+              $('html').addClass('youtube-social');
+            } else {
+              $('html').removeClass('youtube-social');
+            }
             return async.each(keys_1, (function(index, outer_next) {
               var entry, keys_2;
               entry = entries[index];
@@ -237,7 +250,7 @@
                 var $el, $hover;
                 $el = $(e.currentTarget);
                 $hover = $el.closest('#overlay-wrapper').find('.hover-comment');
-                $hover.empty();
+                $hover.find('.fadeIn').toggleClass('fadeIn fadeOut');
                 return $hover.siblings('.comment').show();
               });
             });

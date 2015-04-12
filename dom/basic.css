@@ -1,31 +1,34 @@
-#player-api {
+html.youtube-social[data-player-size="small"] #watch7-sidebar {
+  transform: translate(0, -49px);
+}
+html.youtube-social #player-api {
   margin-bottom: 49px;
 }
-#player-api #overlay-wrapper {
+html.youtube-social #player-api #overlay-wrapper {
   position: relative;
   width: 100%;
   text-align: center;
 }
-#player-api #overlay-wrapper .images {
+html.youtube-social #player-api #overlay-wrapper .images {
   height: 10px;
 }
-#player-api #overlay-wrapper .images .image {
+html.youtube-social #player-api #overlay-wrapper .images .image {
   display: inline-block;
   position: absolute;
 }
-#player-api #overlay-wrapper .images .image:hover .image-hover {
+html.youtube-social #player-api #overlay-wrapper .images .image:hover .image-hover {
   display: block;
 }
-#player-api #overlay-wrapper .images .image > img {
+html.youtube-social #player-api #overlay-wrapper .images .image > img {
   cursor: pointer;
   width: 10px;
   height: 10px;
   position: absolute;
 }
-#player-api #overlay-wrapper .images .image .image-hover {
+html.youtube-social #player-api #overlay-wrapper .images .image .image-hover {
   display: none;
 }
-#player-api #overlay-wrapper .images .image .image-hover {
+html.youtube-social #player-api #overlay-wrapper .images .image .image-hover {
   position: absolute;
   top: -55px;
   z-index: 1000000;
@@ -33,26 +36,27 @@
   height: 50px;
   border: 1px solid #000;
 }
-#player-api #overlay-wrapper .images .image .image-hover > img {
+html.youtube-social #player-api #overlay-wrapper .images .image .image-hover > img {
   width: 48px;
   height: 48px;
 }
-#player-api #overlay-wrapper .hover-comment:empty,
-#player-api #overlay-wrapper .comment:empty {
+html.youtube-social #player-api #overlay-wrapper .hover-comment:empty,
+html.youtube-social #player-api #overlay-wrapper .comment:empty {
   display: none !important;
 }
-#player-api #overlay-wrapper .hover-comment,
-#player-api #overlay-wrapper .comment {
+html.youtube-social #player-api #overlay-wrapper .hover-comment > div,
+html.youtube-social #player-api #overlay-wrapper .comment > div {
   padding: 5px;
-}
-#player-api #overlay-wrapper .comment-wrapper {
   margin: 5px;
   display: inline-block;
   text-align: left;
   background: #808080;
 }
-#player-api #overlay-wrapper .comment-wrapper div,
-#player-api #overlay-wrapper .comment-wrapper span,
-#player-api #overlay-wrapper .comment-wrapper a {
+html.youtube-social #player-api #overlay-wrapper .hover-comment > div div,
+html.youtube-social #player-api #overlay-wrapper .comment > div div,
+html.youtube-social #player-api #overlay-wrapper .hover-comment > div span,
+html.youtube-social #player-api #overlay-wrapper .comment > div span,
+html.youtube-social #player-api #overlay-wrapper .hover-comment > div a,
+html.youtube-social #player-api #overlay-wrapper .comment > div a {
   color: #000;
 }
