@@ -64,7 +64,12 @@
       $comment = $("#player-api > #overlay-wrapper .comment");
       $comment.html(commentTemplate(data));
       return setTimeout((function() {
-        return $comment.find('.fadeIn').toggleClass('fadeIn fadeOut');
+        var $fadeIn;
+        $fadeIn = $comment.find('.fadeIn');
+        $fadeIn.toggleClass('fadeIn fadeOut');
+        return $fadeIn.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+          return $(this).remove();
+        });
       }), 8000);
     };
   })(this);
@@ -247,11 +252,15 @@
                 return $hover.siblings('.comment').hide();
               });
               return $image.mouseleave(function(e) {
-                var $el, $hover;
+                var $el, $fadeIn, $hover;
                 $el = $(e.currentTarget);
                 $hover = $el.closest('#overlay-wrapper').find('.hover-comment');
-                $hover.find('.fadeIn').toggleClass('fadeIn fadeOut');
-                return $hover.siblings('.comment').show();
+                $fadeIn = $hover.find('.fadeIn');
+                $fadeIn.toggleClass('fadeIn fadeOut');
+                return $fadeIn.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                  $(this).remove();
+                  return $hover.siblings('.comment').show();
+                });
               });
             });
           });

@@ -42,7 +42,10 @@ renderComment = (data) =>
   $comment = $("#player-api > #overlay-wrapper .comment")
   $comment.html commentTemplate data
   setTimeout (->
-    $comment.find('.fadeIn').toggleClass('fadeIn fadeOut')
+    $fadeIn = $comment.find('.fadeIn')
+    $fadeIn.toggleClass('fadeIn fadeOut')
+    $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+      $(this).remove()
   ), 8000
 
 
@@ -171,8 +174,11 @@ locInterval .9, ->
           $image.mouseleave (e) ->
             $el = $ e.currentTarget
             $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
-            $hover.find('.fadeIn').toggleClass('fadeIn fadeOut')
-            $hover.siblings('.comment').show()
+            $fadeIn = $hover.find('.fadeIn')
+            $fadeIn.toggleClass('fadeIn fadeOut')
+            $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+              $(this).remove()
+              $hover.siblings('.comment').show()
 
     $.getJSON "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{main_video_id}&key=#{youtube_key}", (data) =>
       comments = Math.max 1000, data?.items[0]?.statistics?.commentCount
