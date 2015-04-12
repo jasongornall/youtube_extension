@@ -8,6 +8,8 @@
 
   span = teacup.span, div = teacup.div, a = teacup.a, h1 = teacup.h1, h3 = teacup.h3, p = teacup.p, iframe = teacup.iframe, raw = teacup.raw, script = teacup.script, coffeescript = teacup.coffeescript, link = teacup.link, input = teacup.input, img = teacup.img;
 
+  old_entry = null;
+
   youtube_video = /(youtube.com|youtu\.be)\/(watch\?|embed\/|v\/|e\/|)(v=)?([^\#\&\?]*)/i;
 
   locInterval = function(time, next) {
@@ -68,7 +70,6 @@
         $fadeIn = $comment.find('.fadeIn');
         $fadeIn.toggleClass('fadeIn fadeOut');
         return $fadeIn.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-          var old_entry;
           $(this).remove();
           return old_entry = null;
         });
@@ -85,8 +86,6 @@
   main_video_id = youtube_video.exec(window.location.href)[4];
 
   initalized = false;
-
-  old_entry = null;
 
   locInterval(.9, function() {
     var current_seconds, getComments, new_entry, video_id;
@@ -279,6 +278,7 @@
       current_seconds = timeToSeconds(current_time.text());
       console.log(current_seconds, '3212323');
       new_entry = entries[current_seconds];
+      console.log(old_entry, new_entry, entries);
       if (new_entry && old_entry !== new_entry) {
         old_entry = new_entry;
         return renderComment(new_entry);

@@ -9,6 +9,8 @@ youtube_key = 'AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ'
 
 teacup = window.window.teacup
 {span, div, a, h1, h3, p, iframe, raw, script, coffeescript, link, input, img} = teacup
+old_entry = null
+
 youtube_video = ///
   (youtube.com|youtu\.be)               # youtube domain
   \/                                    # forward slash
@@ -59,7 +61,6 @@ main_video_id = youtube_video.exec(window.location.href)[4]
 
 
 initalized = false
-old_entry = null
 locInterval .9, ->
   return unless $("#player-api").length
 
@@ -191,6 +192,7 @@ locInterval .9, ->
     current_seconds = timeToSeconds(current_time.text())
     console.log current_seconds, '3212323'
     new_entry = entries[current_seconds]
+    console.log old_entry, new_entry, entries
     if new_entry and old_entry isnt new_entry
       old_entry = new_entry
       renderComment new_entry
