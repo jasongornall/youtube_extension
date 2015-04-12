@@ -30,14 +30,11 @@ timeToSeconds = (time) ->
 
 renderComment = (data) =>
   console.log 'render', data
-  $("#content > #overlay-wrapper").html teacup.render ( =>
-    div '#overlay-wrapper', ->
-      div '.comment', ->
-        div -> data[0]?.name
-        span -> data[0]?.text
-      if data[0]?.reply?.object?.content
-        div -> raw "answer: #{data[0]?.reply?.object?.content}"
-
+  $("#player-api > #overlay-wrapper > .comment").html teacup.render ( =>
+    div -> data[0]?.name
+    span -> data[0]?.text
+    if data[0]?.reply?.object?.content
+      div -> raw "answer: #{data[0]?.reply?.object?.content}"
   )
 
 # bug here need a waiting script
@@ -51,7 +48,7 @@ main_video_id = youtube_video.exec(window.location.href)[4]
 initalized = false
 old_entry = null
 locInterval .9, ->
-  return unless $("#content").length
+  return unless $("#player-api").length
 
   # initilization
   video_id = youtube_video.exec(window.location.href)[4]
@@ -63,20 +60,9 @@ locInterval .9, ->
     console.log 'INITIALIZED'
     main_video_id = youtube_video.exec(window.location.href)[4]
 
-    $("#content").prepend teacup.render ( =>
-      div '#overlay-wrapper', ->
-        div '.images'
-        div '.comment', ->
-          img src: 'https://gp3.googleusercontent.com/-pmGKuLJC7qU/AAAAAAAAAAI/AAAAAAAAABg/aItmNTS9xEY/s48-c-k-no/photo.jpg'
-          span -> 'The stuff he starts playing at 9:47 and onwards. Could someone please give me some advice to learning this style? books?﻿'
-    )
-
-
     getComments = (num = 368) =>
       calls = []
       count = 0
-      video_id = 'AJDUHq2mJx0'
-
       while num > 0
         start_index = (count * 50) + 1
         calls[count] = "https://gdata.youtube.com/feeds/api/videos/#{main_video_id}/comments?start-index=#{start_index}&max-results=50&alt=json"
@@ -117,21 +103,47 @@ locInterval .9, ->
               sub_entry = entries[index][index_2]
               {name, text, image_link, total} = sub_entry
               console.log 'THE HELL?'
-              if /\?|song/.test(text) and total.yt$replyCount.$t != 0
-                id = total.id.$t.match(/comments(.+)$/)?[1]
-                console.log id, 'ID WOOO'
-                $.getJSON "https://www.googleapis.com/plus/v1/activities#{id}/comments?key=#{youtube_key}", (data) =>
-                  sub_entry.reply = data?.items[0]
-                  sub_next()
-              else
+
+              # fix image and get the best reply to questions
+              async.parallel {
+                reply: (inner_next) ->
+                  if /\?|song/gi.test(text) and total.yt$replyCount.$t != 0
+                    id = total.id.$t.match(/comments(.+)$/)?[1]
+                    console.log id, 'ID WOOO'
+                    $.getJSON "https://www.googleapis.com/plus/v1/activities#{id}/comments?key=#{youtube_key}", (data) =>
+                      sub_entry.reply = data?.items[0]
+                      inner_next()
+                  else
+                    inner_next()
+                image_fix: (inner_next) ->
+                  $.getJSON "#{image_link}?alt=json", (data) =>
+                    sub_entry.image = data?.entry?.media$thumbnail?.url
+                    inner_next()
+              }, (err, results) ->
                 sub_next()
+
           ), (err, finish) ->
             console.log "WAHT"
             outer_next()
         ), (err, finish) ->
-          console.log entries, '123', 'WAKKA'
+          console.log entries, 'entries'
+          $("#player-api > #overlay-wrapper").remove()
+          $("#player-api").append teacup.render ( =>
+            div '#overlay-wrapper', =>
+              div '.images', =>
+                for key, entry of entries
+                  left = (key / timeToSeconds(duration.text())) * 100
+                  if entry[0].image
+                    div '.image', style: "left: #{left}%;", ->
+                      img src: "#{entry[0].image}"
+                      div '.image-hover', ->
+                        img src: "#{entry[0].image}"
 
-    getComments()
+              div '.comment'
+
+          )
+    $.getJSON "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{main_video_id}&key=#{youtube_key}", (data) =>
+      getComments(data?.items[0]?.statistics?.commentCount)
 
 
 
@@ -142,6 +154,4 @@ locInterval .9, ->
     if new_entry and old_entry isnt new_entry
       old_entry = new_entry
       renderComment new_entry
-
-
 

@@ -36,26 +36,22 @@
   renderComment = (function(_this) {
     return function(data) {
       console.log('render', data);
-      return $("#content > #overlay-wrapper").html(teacup.render((function() {
-        return div('#overlay-wrapper', function() {
-          var _ref, _ref1, _ref2;
-          div('.comment', function() {
-            div(function() {
-              var _ref;
-              return (_ref = data[0]) != null ? _ref.name : void 0;
-            });
-            return span(function() {
-              var _ref;
-              return (_ref = data[0]) != null ? _ref.text : void 0;
-            });
-          });
-          if ((_ref = data[0]) != null ? (_ref1 = _ref.reply) != null ? (_ref2 = _ref1.object) != null ? _ref2.content : void 0 : void 0 : void 0) {
-            return div(function() {
-              var _ref3, _ref4, _ref5;
-              return raw("answer: " + ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0));
-            });
-          }
+      return $("#player-api > #overlay-wrapper > .comment").html(teacup.render((function() {
+        var _ref, _ref1, _ref2;
+        div(function() {
+          var _ref;
+          return (_ref = data[0]) != null ? _ref.name : void 0;
         });
+        span(function() {
+          var _ref;
+          return (_ref = data[0]) != null ? _ref.text : void 0;
+        });
+        if ((_ref = data[0]) != null ? (_ref1 = _ref.reply) != null ? (_ref2 = _ref1.object) != null ? _ref2.content : void 0 : void 0 : void 0) {
+          return div(function() {
+            var _ref3, _ref4, _ref5;
+            return raw("answer: " + ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0));
+          });
+        }
       })));
     };
   })(this);
@@ -74,7 +70,7 @@
 
   locInterval(.9, function() {
     var current_seconds, getComments, new_entry, video_id;
-    if (!$("#content").length) {
+    if (!$("#player-api").length) {
       return;
     }
     video_id = youtube_video.exec(window.location.href)[4];
@@ -85,21 +81,6 @@
       initalized = true;
       console.log('INITIALIZED');
       main_video_id = youtube_video.exec(window.location.href)[4];
-      $("#content").prepend(teacup.render(((function(_this) {
-        return function() {
-          return div('#overlay-wrapper', function() {
-            div('.images');
-            return div('.comment', function() {
-              img({
-                src: 'https://gp3.googleusercontent.com/-pmGKuLJC7qU/AAAAAAAAAAI/AAAAAAAAABg/aItmNTS9xEY/s48-c-k-no/photo.jpg'
-              });
-              return span(function() {
-                return 'The stuff he starts playing at 9:47 and onwards. Could someone please give me some advice to learning this style? books?﻿';
-              });
-            });
-          });
-        };
-      })(this))));
       getComments = (function(_this) {
         return function(num) {
           var calls, count, start_index;
@@ -108,7 +89,6 @@
           }
           calls = [];
           count = 0;
-          video_id = 'AJDUHq2mJx0';
           while (num > 0) {
             start_index = (count * 50) + 1;
             calls[count] = "https://gdata.youtube.com/feeds/api/videos/" + main_video_id + "/comments?start-index=" + start_index + "&max-results=50&alt=json";
@@ -158,20 +138,38 @@
               return async.each(keys_2, (function(index_2, sub_next) {
                 return (function(_this) {
                   return function() {
-                    var id, image_link, name, sub_entry, text, total, _ref;
+                    var image_link, name, sub_entry, text, total;
                     sub_entry = entries[index][index_2];
                     name = sub_entry.name, text = sub_entry.text, image_link = sub_entry.image_link, total = sub_entry.total;
                     console.log('THE HELL?');
-                    if (/\?|song/.test(text) && total.yt$replyCount.$t !== 0) {
-                      id = (_ref = total.id.$t.match(/comments(.+)$/)) != null ? _ref[1] : void 0;
-                      console.log(id, 'ID WOOO');
-                      return $.getJSON("https://www.googleapis.com/plus/v1/activities" + id + "/comments?key=" + youtube_key, function(data) {
-                        sub_entry.reply = data != null ? data.items[0] : void 0;
-                        return sub_next();
-                      });
-                    } else {
+                    return async.parallel({
+                      reply: function(inner_next) {
+                        var id, _ref;
+                        if (/\?|song/gi.test(text) && total.yt$replyCount.$t !== 0) {
+                          id = (_ref = total.id.$t.match(/comments(.+)$/)) != null ? _ref[1] : void 0;
+                          console.log(id, 'ID WOOO');
+                          return $.getJSON("https://www.googleapis.com/plus/v1/activities" + id + "/comments?key=" + youtube_key, (function(_this) {
+                            return function(data) {
+                              sub_entry.reply = data != null ? data.items[0] : void 0;
+                              return inner_next();
+                            };
+                          })(this));
+                        } else {
+                          return inner_next();
+                        }
+                      },
+                      image_fix: function(inner_next) {
+                        return $.getJSON("" + image_link + "?alt=json", (function(_this) {
+                          return function(data) {
+                            var _ref, _ref1;
+                            sub_entry.image = data != null ? (_ref = data.entry) != null ? (_ref1 = _ref.media$thumbnail) != null ? _ref1.url : void 0 : void 0 : void 0;
+                            return inner_next();
+                          };
+                        })(this));
+                      }
+                    }, function(err, results) {
                       return sub_next();
-                    }
+                    });
                   };
                 })(this)();
               }), function(err, finish) {
@@ -179,12 +177,50 @@
                 return outer_next();
               });
             }), function(err, finish) {
-              return console.log(entries, '123', 'WAKKA');
+              console.log(entries, 'entries');
+              $("#player-api > #overlay-wrapper").remove();
+              return $("#player-api").append(teacup.render(((function(_this) {
+                return function() {
+                  return div('#overlay-wrapper', function() {
+                    div('.images', function() {
+                      var entry, key, left, _results;
+                      _results = [];
+                      for (key in entries) {
+                        entry = entries[key];
+                        left = (key / timeToSeconds(duration.text())) * 100;
+                        if (entry[0].image) {
+                          _results.push(div('.image', {
+                            style: "left: " + left + "%;"
+                          }, function() {
+                            img({
+                              src: "" + entry[0].image
+                            });
+                            return div('.image-hover', function() {
+                              return img({
+                                src: "" + entry[0].image
+                              });
+                            });
+                          }));
+                        } else {
+                          _results.push(void 0);
+                        }
+                      }
+                      return _results;
+                    });
+                    return div('.comment');
+                  });
+                };
+              })(this))));
             });
           });
         };
       })(this);
-      return getComments();
+      return $.getJSON("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=" + main_video_id + "&key=" + youtube_key, (function(_this) {
+        return function(data) {
+          var _ref, _ref1;
+          return getComments(data != null ? (_ref = data.items[0]) != null ? (_ref1 = _ref.statistics) != null ? _ref1.commentCount : void 0 : void 0 : void 0);
+        };
+      })(this));
     } else {
       current_seconds = timeToSeconds(current_time.text());
       console.log(current_seconds, '3212323');
