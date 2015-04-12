@@ -24,6 +24,8 @@
 }
 #player-api #overlay-wrapper .images .image .image-hover {
   display: none;
+}
+#player-api #overlay-wrapper .images .image .image-hover {
   position: absolute;
   top: -55px;
   z-index: 1000000;
@@ -35,13 +37,22 @@
   width: 48px;
   height: 48px;
 }
-#player-api #overlay-wrapper .comment {
-  padding: 50px;
+#player-api #overlay-wrapper .hover-comment:empty,
+#player-api #overlay-wrapper .comment:empty {
+  display: none;
+}
+#player-api #overlay-wrapper .comment,
+#player-api #overlay-wrapper .hover-comment {
+  padding: 5px;
   display: inline-block;
   text-align: left;
+  background: #808080;
 }
 #player-api #overlay-wrapper .comment div,
+#player-api #overlay-wrapper .hover-comment div,
 #player-api #overlay-wrapper .comment span,
-#player-api #overlay-wrapper .comment a {
+#player-api #overlay-wrapper .hover-comment span,
+#player-api #overlay-wrapper .comment a,
+#player-api #overlay-wrapper .hover-comment a {
   color: #000;
 }

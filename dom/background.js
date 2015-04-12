@@ -38,7 +38,7 @@
       console.log('render', data);
       return $("#player-api > #overlay-wrapper > .comment").html(teacup.render((function() {
         var _ref, _ref1, _ref2;
-        div(function() {
+        span(function() {
           var _ref;
           return (_ref = data[0]) != null ? _ref.name : void 0;
         });
@@ -177,9 +177,10 @@
                 return outer_next();
               });
             }), function(err, finish) {
+              var $image;
               console.log(entries, 'entries');
               $("#player-api > #overlay-wrapper").remove();
-              return $("#player-api").append(teacup.render(((function(_this) {
+              $("#player-api").append(teacup.render(((function(_this) {
                 return function() {
                   return div('#overlay-wrapper', function() {
                     div('.images', function() {
@@ -190,6 +191,7 @@
                         left = (key / timeToSeconds(duration.text())) * 100;
                         if (entry[0].image) {
                           _results.push(div('.image', {
+                            'key': key,
                             style: "left: " + left + "%;"
                           }, function() {
                             img({
@@ -207,10 +209,44 @@
                       }
                       return _results;
                     });
-                    return div('.comment');
+                    div('.comment');
+                    return div('.hover-comment');
                   });
                 };
               })(this))));
+              $image = $("#player-api #overlay-wrapper .images > .image");
+              $image.mouseenter(function(e) {
+                var $el, $hover, data;
+                $el = $(e.currentTarget);
+                console.log($el.attr('key'), "THIS IS THE KEY");
+                data = entries[$el.attr('key')];
+                $hover = $el.closest('#overlay-wrapper').find('.hover-comment');
+                return $hover.html(teacup.render(((function(_this) {
+                  return function() {
+                    var _ref, _ref1, _ref2;
+                    span(function() {
+                      var _ref;
+                      return (_ref = data[0]) != null ? _ref.name : void 0;
+                    });
+                    span(function() {
+                      var _ref;
+                      return (_ref = data[0]) != null ? _ref.text : void 0;
+                    });
+                    if ((_ref = data[0]) != null ? (_ref1 = _ref.reply) != null ? (_ref2 = _ref1.object) != null ? _ref2.content : void 0 : void 0 : void 0) {
+                      return div(function() {
+                        var _ref3, _ref4, _ref5;
+                        return raw("answer: " + ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0));
+                      });
+                    }
+                  };
+                })(this))));
+              });
+              return $image.mouseleave(function(e) {
+                var $el, $hover;
+                $el = $(e.currentTarget);
+                $hover = $el.closest('#overlay-wrapper').find('.hover-comment');
+                return $hover.empty();
+              });
             });
           });
         };

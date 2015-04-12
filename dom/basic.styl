@@ -19,6 +19,7 @@
           position absolute
         .image-hover
           display none
+        .image-hover
           position absolute
           top -55px
           z-index 1000000
@@ -28,10 +29,12 @@
           > img
             width 48px
             height 48px
-
-    .comment
-      padding 50px
+    .hover-comment:empty, .comment:empty
+      display none
+    .comment, .hover-comment
+      padding 5px
       display inline-block
       text-align left
+      background gray
       div, span, a
         color black

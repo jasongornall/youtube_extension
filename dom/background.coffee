@@ -31,7 +31,7 @@ timeToSeconds = (time) ->
 renderComment = (data) =>
   console.log 'render', data
   $("#player-api > #overlay-wrapper > .comment").html teacup.render ( =>
-    div -> data[0]?.name
+    span -> data[0]?.name
     span -> data[0]?.text
     if data[0]?.reply?.object?.content
       div -> raw "answer: #{data[0]?.reply?.object?.content}"
@@ -134,14 +134,31 @@ locInterval .9, ->
                 for key, entry of entries
                   left = (key / timeToSeconds(duration.text())) * 100
                   if entry[0].image
-                    div '.image', style: "left: #{left}%;", ->
+                    div '.image', 'key':key, style: "left: #{left}%;", ->
                       img src: "#{entry[0].image}"
                       div '.image-hover', ->
                         img src: "#{entry[0].image}"
 
               div '.comment'
-
+              div '.hover-comment'
           )
+          $image = $("#player-api #overlay-wrapper .images > .image")
+          $image.mouseenter (e) ->
+            $el = $ e.currentTarget
+            console.log $el.attr('key'), "THIS IS THE KEY"
+            data = entries[$el.attr('key')]
+            $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
+            $hover.html teacup.render ( =>
+              span -> data[0]?.name
+              span -> data[0]?.text
+              if data[0]?.reply?.object?.content
+                div -> raw "answer: #{data[0]?.reply?.object?.content}"
+            )
+          $image.mouseleave (e) ->
+            $el = $ e.currentTarget
+            $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
+            $hover.empty()
+
     $.getJSON "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{main_video_id}&key=#{youtube_key}", (data) =>
       getComments(data?.items[0]?.statistics?.commentCount)
 
