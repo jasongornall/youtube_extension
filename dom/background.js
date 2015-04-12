@@ -84,6 +84,7 @@
       initalized = false;
     }
     if (!initalized) {
+      $("#player-api > #overlay-wrapper").remove();
       initalized = true;
       console.log('INITIALIZED');
       main_video_id = youtube_video.exec(window.location.href)[4];
@@ -245,8 +246,9 @@
       })(this);
       return $.getJSON("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=" + main_video_id + "&key=" + youtube_key, (function(_this) {
         return function(data) {
-          var _ref, _ref1;
-          return getComments(data != null ? (_ref = data.items[0]) != null ? (_ref1 = _ref.statistics) != null ? _ref1.commentCount : void 0 : void 0 : void 0);
+          var comments, _ref, _ref1;
+          comments = Math.max(1000, data != null ? (_ref = data.items[0]) != null ? (_ref1 = _ref.statistics) != null ? _ref1.commentCount : void 0 : void 0 : void 0);
+          return getComments();
         };
       })(this));
     } else {

@@ -59,6 +59,7 @@ locInterval .9, ->
    initalized = false
 
   if not initalized
+    $("#player-api > #overlay-wrapper").remove()
     initalized = true
     console.log 'INITIALIZED'
     main_video_id = youtube_video.exec(window.location.href)[4]
@@ -162,7 +163,8 @@ locInterval .9, ->
             $hover.siblings('.comment').show()
 
     $.getJSON "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{main_video_id}&key=#{youtube_key}", (data) =>
-      getComments(data?.items[0]?.statistics?.commentCount)
+      comments = Math.max 1000, data?.items[0]?.statistics?.commentCount
+      getComments()
 
 
 

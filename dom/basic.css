@@ -39,7 +39,7 @@
 }
 #player-api #overlay-wrapper .hover-comment:empty,
 #player-api #overlay-wrapper .comment:empty {
-  display: none;
+  display: none !important;
 }
 #player-api #overlay-wrapper .hover-comment,
 #player-api #overlay-wrapper .comment {
