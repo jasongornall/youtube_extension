@@ -1,9 +1,10 @@
 #player-api {
-  margin-bottom: 80px;
+  margin-bottom: 49px;
 }
 #player-api #overlay-wrapper {
   position: relative;
   width: 100%;
+  text-align: center;
 }
 #player-api #overlay-wrapper .images {
   height: 10px;
@@ -33,6 +34,11 @@
 #player-api #overlay-wrapper .images .image .image-hover > img {
   width: 48px;
   height: 48px;
+}
+#player-api #overlay-wrapper .comment {
+  padding: 50px;
+  display: inline-block;
+  text-align: left;
 }
 #player-api #overlay-wrapper .comment div,
 #player-api #overlay-wrapper .comment span,
