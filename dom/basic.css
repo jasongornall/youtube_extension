@@ -41,8 +41,12 @@
 #player-api #overlay-wrapper .comment:empty {
   display: none;
 }
-#player-api #overlay-wrapper .comment-wrapper {
+#player-api #overlay-wrapper .hover-comment,
+#player-api #overlay-wrapper .comment {
   padding: 5px;
+}
+#player-api #overlay-wrapper .comment-wrapper {
+  margin: 5px;
   display: inline-block;
   text-align: left;
   background: #808080;

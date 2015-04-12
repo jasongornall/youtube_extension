@@ -28,14 +28,17 @@ timeToSeconds = (time) ->
   seconds += parseInt(elements[3]) * 24 * 60 * 60 if elements[3]
   return seconds
 
-renderComment = (data) =>
-  console.log 'render', data
-  $("#player-api > #overlay-wrapper > .comment").html teacup.render ( =>
-    span -> data[0]?.name
+
+commentTemplate = (data) =>
+  return teacup.render ( =>
+    span -> "#{data[0]?.name}: "
     span -> data[0]?.text
     if data[0]?.reply?.object?.content
       div -> raw "answer: #{data[0]?.reply?.object?.content}"
   )
+renderComment = (data) =>
+  console.log 'render', data
+  $("#player-api > #overlay-wrapper .comment").html commentTemplate data
 
 # bug here need a waiting script
 current_time = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-current')
@@ -148,16 +151,15 @@ locInterval .9, ->
             console.log $el.attr('key'), "THIS IS THE KEY"
             data = entries[$el.attr('key')]
             $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
-            $hover.html teacup.render ( =>
-              span -> data[0]?.name
-              span -> data[0]?.text
-              if data[0]?.reply?.object?.content
-                div -> raw "answer: #{data[0]?.reply?.object?.content}"
-            )
+            $hover.html commentTemplate(data)
+            $hover.siblings('.comment').hide()
+
+
           $image.mouseleave (e) ->
             $el = $ e.currentTarget
             $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
             $hover.empty()
+            $hover.siblings('.comment').show()
 
     $.getJSON "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{main_video_id}&key=#{youtube_key}", (data) =>
       getComments(data?.items[0]?.statistics?.commentCount)
