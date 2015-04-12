@@ -90,6 +90,12 @@
     if (!$("#player-api").length) {
       return;
     }
+    if (!duration.length) {
+      return;
+    }
+    if (!current_time.length) {
+      return;
+    }
     video_id = youtube_video.exec(window.location.href)[4];
     if (video_id !== main_video_id) {
       initalized = false;

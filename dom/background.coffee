@@ -62,6 +62,8 @@ main_video_id = youtube_video.exec(window.location.href)[4]
 initalized = false
 locInterval .9, ->
   return unless $("#player-api").length
+  return unless duration.length
+  return unless current_time.length
 
   # initilization
   video_id = youtube_video.exec(window.location.href)[4]
