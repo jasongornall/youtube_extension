@@ -111,11 +111,6 @@ locInterval .9, ->
           next()
       ), (err, finish) ->
         keys_1 = Object.keys(entries)
-
-        if keys_1.length
-          $('html').addClass('youtube-social')
-        else
-          $('html').removeClass('youtube-social')
         async.each keys_1, ((index, outer_next) ->
           entry = entries[index]
 
@@ -164,6 +159,11 @@ locInterval .9, ->
                 div '.comment'
                 div '.hover-comment'
           )
+          # only do this at the end
+          if keys_1.length
+            $('html').addClass('youtube-social')
+          else
+            $('html').removeClass('youtube-social')
           $image = $("#player-api #overlay-wrapper .images > .image")
           $image.mouseenter (e) ->
             $el = $ e.currentTarget

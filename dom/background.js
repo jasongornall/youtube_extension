@@ -156,11 +156,6 @@
           }), function(err, finish) {
             var keys_1;
             keys_1 = Object.keys(entries);
-            if (keys_1.length) {
-              $('html').addClass('youtube-social');
-            } else {
-              $('html').removeClass('youtube-social');
-            }
             return async.each(keys_1, (function(index, outer_next) {
               var entry, keys_2;
               entry = entries[index];
@@ -247,6 +242,11 @@
                   });
                 };
               })(this))));
+              if (keys_1.length) {
+                $('html').addClass('youtube-social');
+              } else {
+                $('html').removeClass('youtube-social');
+              }
               $image = $("#player-api #overlay-wrapper .images > .image");
               $image.mouseenter(function(e) {
                 var $el, $hover, data;
