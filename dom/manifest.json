@@ -8,6 +8,9 @@
     "icons": ["icon.png"],
     "default_icon": "icon.png"
   },
+  "permissions": [
+    "http://*/",  "https://*/"
+  ],
   "content_scripts": [ {
     "matches": [ "http://www.youtube.com/*", "https://www.youtube.com/*"],
     "css": ["basic.css", "animate.css"],
