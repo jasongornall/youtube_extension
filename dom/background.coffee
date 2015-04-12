@@ -1,5 +1,4 @@
 # youtube polling
-youtube_key = 'AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ'
 # get comments
 # https://gdata.youtube.com/feeds/api/videos/AJDUHq2mJx0/comments?start-index=26&max-results=25
 
@@ -129,9 +128,9 @@ locInterval .9, ->
               async.parallel {
                 reply: (inner_next) ->
                   if /\?|song/gi.test(text) and total.yt$replyCount.$t != 0
-                    id = total.id.$t.match(/comments(.+)$/)?[1]
+                    id = total.id.$t.match(/comments\/(.+)$/)?[1]
                     console.log id, 'ID WOOO'
-                    $.getJSON "https://www.googleapis.com/plus/v1/activities#{id}/comments?key=#{youtube_key}", (data) =>
+                    chrome.runtime.sendMessage {id: id, type: 'youtube-comments'}, (data) ->
                       sub_entry.reply = data?.items[0]
                       inner_next()
                   else
@@ -181,8 +180,7 @@ locInterval .9, ->
             $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
               $(this).remove()
               $hover.siblings('.comment').show()
-
-    $.getJSON "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{main_video_id}&key=#{youtube_key}", (data) =>
+    chrome.runtime.sendMessage {id: main_video_id, type: 'youtube-stats'}, (data) ->
       comments = Math.max 1000, data?.items[0]?.statistics?.commentCount
       getComments()
 
