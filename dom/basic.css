@@ -41,18 +41,14 @@
 #player-api #overlay-wrapper .comment:empty {
   display: none;
 }
-#player-api #overlay-wrapper .comment,
-#player-api #overlay-wrapper .hover-comment {
+#player-api #overlay-wrapper .comment-wrapper {
   padding: 5px;
   display: inline-block;
   text-align: left;
   background: #808080;
 }
-#player-api #overlay-wrapper .comment div,
-#player-api #overlay-wrapper .hover-comment div,
-#player-api #overlay-wrapper .comment span,
-#player-api #overlay-wrapper .hover-comment span,
-#player-api #overlay-wrapper .comment a,
-#player-api #overlay-wrapper .hover-comment a {
+#player-api #overlay-wrapper .comment-wrapper div,
+#player-api #overlay-wrapper .comment-wrapper span,
+#player-api #overlay-wrapper .comment-wrapper a {
   color: #000;
 }

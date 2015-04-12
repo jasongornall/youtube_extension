@@ -138,9 +138,9 @@ locInterval .9, ->
                       img src: "#{entry[0].image}"
                       div '.image-hover', ->
                         img src: "#{entry[0].image}"
-
-              div '.comment'
-              div '.hover-comment'
+              div '.comment-wrapper', ->
+                div '.comment'
+                div '.hover-comment'
           )
           $image = $("#player-api #overlay-wrapper .images > .image")
           $image.mouseenter (e) ->

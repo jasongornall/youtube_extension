@@ -209,8 +209,10 @@
                       }
                       return _results;
                     });
-                    div('.comment');
-                    return div('.hover-comment');
+                    return div('.comment-wrapper', function() {
+                      div('.comment');
+                      return div('.hover-comment');
+                    });
                   });
                 };
               })(this))));
