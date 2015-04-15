@@ -8,6 +8,8 @@ html.youtube-social
       position relative
       width 100%
       text-align center
+      .comment-wrapper
+        font-size 15px
       .images
         height 10px
         .image
@@ -36,11 +38,15 @@ html.youtube-social
       .hover-comment:empty, .comment:empty
         display none !important
       .hover-comment, .comment
+        position relative
+        z-index 100000
         > div
           padding 5px
           margin 5px
           display inline-block
           text-align left
-          background gray
-          div, span, a
+          background white
+          div, span
             color black
+          .name:after
+            content: ': '

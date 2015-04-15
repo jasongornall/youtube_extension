@@ -37,19 +37,21 @@
     return function(data) {
       return teacup.render((function() {
         return div('.animated fadeIn', function() {
-          var _ref, _ref1, _ref2;
-          span(function() {
-            var _ref;
-            return "" + ((_ref = data[0]) != null ? _ref.name : void 0) + ": ";
+          var _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
+          a('.name', {
+            href: "/channel/" + ((_ref = data[0]) != null ? (_ref1 = _ref.total) != null ? (_ref2 = _ref1.yt$channelId) != null ? _ref2.$t : void 0 : void 0 : void 0)
+          }, function() {
+            var _ref3;
+            return "" + ((_ref3 = data[0]) != null ? _ref3.name : void 0);
           });
-          span(function() {
-            var _ref;
-            return (_ref = data[0]) != null ? _ref.text : void 0;
+          span('.description', function() {
+            var _ref3;
+            return (_ref3 = data[0]) != null ? _ref3.text : void 0;
           });
-          if ((_ref = data[0]) != null ? (_ref1 = _ref.reply) != null ? (_ref2 = _ref1.object) != null ? _ref2.content : void 0 : void 0 : void 0) {
-            return div(function() {
-              var _ref3, _ref4, _ref5;
-              return raw("answer: " + ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0));
+          if ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0) {
+            return div('.reply', function() {
+              var _ref6, _ref7, _ref8;
+              return raw("answer: " + ((_ref6 = data[0]) != null ? (_ref7 = _ref6.reply) != null ? (_ref8 = _ref7.object) != null ? _ref8.content : void 0 : void 0 : void 0));
             });
           }
         });
@@ -161,7 +163,6 @@
                   if ((matches != null ? matches.length : void 0) > 1) {
                     continue;
                   }
-                  console.log(matches != null ? matches.length : void 0, matches, 'apple');
                   seconds = timeToSeconds(spot);
                   if (entries[seconds] == null) {
                     entries[seconds] = [];

@@ -33,10 +33,10 @@ timeToSeconds = (time) ->
 commentTemplate = (data) =>
   return teacup.render ( =>
     div '.animated fadeIn', ->
-      span -> "#{data[0]?.name}: "
-      span -> data[0]?.text
+      a '.name', href:"/channel/#{data[0]?.total?.yt$channelId?.$t}", -> "#{data[0]?.name}"
+      span '.description',-> data[0]?.text
       if data[0]?.reply?.object?.content
-        div -> raw "answer: #{data[0]?.reply?.object?.content}"
+        div '.reply', -> raw "answer: #{data[0]?.reply?.object?.content}"
   )
 timeoutID = null
 renderComment = (data) =>
@@ -114,7 +114,6 @@ locInterval .9, ->
             spot = matches?[0]
             continue unless spot
             continue if matches?.length > 1
-            console.log matches?.length, matches, 'apple'
             seconds = timeToSeconds(spot)
             entries[seconds] ?= []
             entries[seconds].push {
