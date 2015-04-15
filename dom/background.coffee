@@ -38,11 +38,13 @@ commentTemplate = (data) =>
       if data[0]?.reply?.object?.content
         div -> raw "answer: #{data[0]?.reply?.object?.content}"
   )
+timeoutID = null
 renderComment = (data) =>
   console.log 'render', data
   $comment = $("#player-api > #overlay-wrapper .comment")
   $comment.html commentTemplate data
-  setTimeout (->
+  clearTimeout timeoutID if timeoutID
+  timeoutID = setTimeout (->
     $fadeIn = $comment.find('.fadeIn')
     $fadeIn.toggleClass('fadeIn fadeOut')
     $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
@@ -60,6 +62,9 @@ main_video_id = youtube_video.exec(window.location.href)[4]
 
 
 initalized = false
+finished_loading = false
+retryAttempt = null
+
 locInterval .9, ->
   return unless $("#player-api").length
   return unless duration.length
@@ -71,6 +76,17 @@ locInterval .9, ->
    initalized = false
 
   if not initalized
+    #SOMETHING BAD HAPPENED GIVE IT 1 MORE GO
+    clearTimeout retryAttempt if retryAttempt
+    retryAttempt = setTimeout (->
+      if (finished_loading is false)
+        console.log 'init failed trying again'
+        retryCount--
+        initalized = finished_loading
+      else
+        console.log 'init succeeded'
+    ), 8000
+
     $("#player-api > #overlay-wrapper").remove()
     $('html').removeClass('youtube-social')
     initalized = true
@@ -92,13 +108,14 @@ locInterval .9, ->
       async.each calls, ((call, next) ->
         console.log call
         $.getJSON call, (data) =>
-          console.log 'success,data'
           return next() unless data?.feed?.entry?.length
-          console.log 'inside'
           for entry in data?.feed?.entry
             content = entry.content.$t
-            spot = content.match(/(\d+:[\d:]+)/)?[1]
+            matches = content.match(/(\d+:[\d:]+)/gmi)
+            spot = matches?[1]
             continue unless spot
+            continue if matches?.length > 2
+            console.log matches?.length
             seconds = timeToSeconds(spot)
             entries[seconds] ?= []
             entries[seconds].push {
@@ -119,30 +136,36 @@ locInterval .9, ->
             do =>
               sub_entry = entries[index][index_2]
               {name, text, image_link, total} = sub_entry
-              console.log 'THE HELL?'
 
               # fix image and get the best reply to questions
               async.parallel {
                 reply: (inner_next) ->
                   if /\?|song/gi.test(text) and total.yt$replyCount.$t != 0
                     id = total.id.$t.match(/comments\/(.+)$/)?[1]
-                    console.log id, 'ID WOOO'
+                    sub_entry.type = 'reply'
                     chrome.runtime.sendMessage {id: id, type: 'youtube-comments'}, (data) ->
                       sub_entry.reply = data?.items[0]
                       inner_next()
                   else
+                    sub_entry.type = 'message'
                     inner_next()
                 image_fix: (inner_next) ->
-                  $.getJSON "#{image_link}?alt=json", (data) =>
-                    sub_entry.image = data?.entry?.media$thumbnail?.url
-                    inner_next()
+                  $.ajax {
+                    url: "#{image_link}?alt=json"
+                    dataType: 'json'
+                    success: (data) =>
+                      sub_entry.image = data?.entry?.media$thumbnail?.url
+                      inner_next()
+                    error: (data) ->
+                      inner_next()
+                  }
               }, (err, results) ->
                 sub_next()
 
           ), (err, finish) ->
-            console.log "WAHT"
             outer_next()
         ), (err, finish) ->
+          finished_loading = true
           console.log entries, 'entries'
           $("#player-api > #overlay-wrapper").remove()
           $("#player-api").append teacup.render ( =>
@@ -190,9 +213,7 @@ locInterval .9, ->
 
   else
     current_seconds = timeToSeconds(current_time.text())
-    console.log current_seconds, '3212323'
     new_entry = entries[current_seconds]
-    console.log old_entry, new_entry, entries
     if new_entry and old_entry isnt new_entry
       old_entry = new_entry
       renderComment new_entry

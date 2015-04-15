@@ -5,6 +5,7 @@
     base_url = "http://nodejs-questionsapi.rhcloud.com/youtube-api";
     switch (request.type) {
       case 'youtube-comments':
+        console.log('b');
         $.getJSON("" + base_url + "/youtube_comments?id=" + request.id, (function(_this) {
           return function(data) {
             return sendResponse(data);
@@ -12,6 +13,7 @@
         })(this));
         break;
       case 'youtube-stats':
+        console.log('a');
         $.getJSON("" + base_url + "/youtube_stats?id=" + request.id, (function(_this) {
           return function(data) {
             return sendResponse(data);
