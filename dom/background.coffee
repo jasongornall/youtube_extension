@@ -36,7 +36,9 @@ commentTemplate = (data) =>
       a '.name', href:"/channel/#{data[0]?.total?.yt$channelId?.$t}", -> "#{data[0]?.name}"
       span '.description',-> data[0]?.text
       if data[0]?.reply?.object?.content
-        div '.reply', -> raw "answer: #{data[0]?.reply?.object?.content}"
+        div '.reply', ->
+          span '.name', -> "#{data[0]?.reply?.actor?.displayName}: "
+          span -> raw "#{data[0]?.reply?.object?.content}"
   )
 timeoutID = null
 renderComment = (data) =>

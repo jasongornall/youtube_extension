@@ -51,6 +51,8 @@ html.youtube-social #player-api #overlay-wrapper .hover-comment,
 html.youtube-social #player-api #overlay-wrapper .comment {
   position: relative;
   z-index: 100000;
+  box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.2);
+  background: #fff;
 }
 html.youtube-social #player-api #overlay-wrapper .hover-comment > div,
 html.youtube-social #player-api #overlay-wrapper .comment > div {
@@ -65,6 +67,15 @@ html.youtube-social #player-api #overlay-wrapper .comment > div div,
 html.youtube-social #player-api #overlay-wrapper .hover-comment > div span,
 html.youtube-social #player-api #overlay-wrapper .comment > div span {
   color: #000;
+}
+html.youtube-social #player-api #overlay-wrapper .hover-comment > div span.name,
+html.youtube-social #player-api #overlay-wrapper .comment > div span.name {
+  color: #128ee9;
+}
+html.youtube-social #player-api #overlay-wrapper .hover-comment > div .reply,
+html.youtube-social #player-api #overlay-wrapper .comment > div .reply {
+  margin-left: 10px;
+  margin-top: 5px;
 }
 html.youtube-social #player-api #overlay-wrapper .hover-comment > div .name:after,
 html.youtube-social #player-api #overlay-wrapper .comment > div .name:after {

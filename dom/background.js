@@ -50,8 +50,14 @@
           });
           if ((_ref3 = data[0]) != null ? (_ref4 = _ref3.reply) != null ? (_ref5 = _ref4.object) != null ? _ref5.content : void 0 : void 0 : void 0) {
             return div('.reply', function() {
-              var _ref6, _ref7, _ref8;
-              return raw("answer: " + ((_ref6 = data[0]) != null ? (_ref7 = _ref6.reply) != null ? (_ref8 = _ref7.object) != null ? _ref8.content : void 0 : void 0 : void 0));
+              span('.name', function() {
+                var _ref6, _ref7, _ref8;
+                return "" + ((_ref6 = data[0]) != null ? (_ref7 = _ref6.reply) != null ? (_ref8 = _ref7.actor) != null ? _ref8.displayName : void 0 : void 0 : void 0) + ": ";
+              });
+              return span(function() {
+                var _ref6, _ref7, _ref8;
+                return raw("" + ((_ref6 = data[0]) != null ? (_ref7 = _ref6.reply) != null ? (_ref8 = _ref7.object) != null ? _ref8.content : void 0 : void 0 : void 0));
+              });
             });
           }
         });
