@@ -147,7 +147,7 @@ locInterval .9, ->
                         sub_entry.reply = data?.items[0]
                         inner_next()
                     else
-                      delete entries[index]
+                      delete entries[index][index_2]
                       inner_next()
 
                   else
@@ -176,7 +176,7 @@ locInterval .9, ->
             div '#overlay-wrapper', =>
               div '.images', =>
                 for key, entry of entries
-                  continue unless entry
+                  continue unless entry?[0]
                   left = (key / timeToSeconds(duration.text())) * 100
                   if entry[0].image
                     div '.image', 'key':key, style: "left: #{left}%;", ->
@@ -219,7 +219,7 @@ locInterval .9, ->
   else
     current_seconds = timeToSeconds(current_time.text())
     new_entry = entries[current_seconds]
-    if new_entry and old_entry isnt new_entry
+    if new_entry?[0] and old_entry isnt new_entry
       old_entry = new_entry
       renderComment new_entry
 

@@ -204,7 +204,7 @@
                               return inner_next();
                             });
                           } else {
-                            delete entries[index];
+                            delete entries[index][index_2];
                             return inner_next();
                           }
                         } else {
@@ -249,7 +249,7 @@
                       _results = [];
                       for (key in entries) {
                         entry = entries[key];
-                        if (!entry) {
+                        if (!(entry != null ? entry[0] : void 0)) {
                           continue;
                         }
                         left = (key / timeToSeconds(duration.text())) * 100;
@@ -321,7 +321,7 @@
     } else {
       current_seconds = timeToSeconds(current_time.text());
       new_entry = entries[current_seconds];
-      if (new_entry && old_entry !== new_entry) {
+      if ((new_entry != null ? new_entry[0] : void 0) && old_entry !== new_entry) {
         old_entry = new_entry;
         return renderComment(new_entry);
       }
