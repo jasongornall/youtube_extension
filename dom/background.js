@@ -154,14 +154,12 @@
                 for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
                   entry = _ref3[_i];
                   content = entry.content.$t;
-                  matches = content.match(/(\d+:[\d:]+)/m);
+                  matches = content.match(/(\d+:[\d:]+)/);
                   spot = matches != null ? matches[1] : void 0;
                   if (!spot) {
                     continue;
                   }
-                  if ((matches != null ? matches.length : void 0) > 2) {
-                    continue;
-                  }
+                  console.log(matches != null ? matches.length : void 0, matches, 'apple');
                   seconds = timeToSeconds(spot);
                   if (entries[seconds] == null) {
                     entries[seconds] = [];
@@ -192,21 +190,16 @@
                     return async.parallel({
                       reply: function(inner_next) {
                         var id, _ref;
-                        if (/\?|song|music|/gi.test(text)) {
+                        if (/\?|song/gi.test(text) && total.yt$replyCount.$t !== 0) {
                           sub_entry.type = 'reply';
-                          if (total.yt$replyCount.$t !== 0) {
-                            id = (_ref = total.id.$t.match(/comments\/(.+)$/)) != null ? _ref[1] : void 0;
-                            return chrome.runtime.sendMessage({
-                              id: id,
-                              type: 'youtube-comments'
-                            }, function(data) {
-                              sub_entry.reply = data != null ? data.items[0] : void 0;
-                              return inner_next();
-                            });
-                          } else {
-                            delete entries[index][index_2];
+                          id = (_ref = total.id.$t.match(/comments\/(.+)$/)) != null ? _ref[1] : void 0;
+                          return chrome.runtime.sendMessage({
+                            id: id,
+                            type: 'youtube-comments'
+                          }, function(data) {
+                            sub_entry.reply = data != null ? data.items[0] : void 0;
                             return inner_next();
-                          }
+                          });
                         } else {
                           sub_entry.type = 'message';
                           return inner_next();
@@ -249,7 +242,7 @@
                       _results = [];
                       for (key in entries) {
                         entry = entries[key];
-                        if (!(entry != null ? entry[0] : void 0)) {
+                        if (!entry) {
                           continue;
                         }
                         left = (key / timeToSeconds(duration.text())) * 100;
@@ -321,7 +314,7 @@
     } else {
       current_seconds = timeToSeconds(current_time.text());
       new_entry = entries[current_seconds];
-      if ((new_entry != null ? new_entry[0] : void 0) && old_entry !== new_entry) {
+      if (new_entry && old_entry !== new_entry) {
         old_entry = new_entry;
         return renderComment(new_entry);
       }

@@ -111,10 +111,10 @@ locInterval .9, ->
           return next() unless data?.feed?.entry?.length
           for entry in data?.feed?.entry
             content = entry.content.$t
-            matches = content.match(/(\d+:[\d:]+)/m)
+            matches = content.match(/(\d+:[\d:]+)/)
             spot = matches?[1]
             continue unless spot
-            continue if matches?.length > 2
+            console.log matches?.length, matches, 'apple'
             seconds = timeToSeconds(spot)
             entries[seconds] ?= []
             entries[seconds].push {
@@ -139,17 +139,12 @@ locInterval .9, ->
               # fix image and get the best reply to questions
               async.parallel {
                 reply: (inner_next) ->
-                  if /\?|song|music|/gi.test(text)
+                  if /\?|song/gi.test(text) and total.yt$replyCount.$t != 0
                     sub_entry.type = 'reply'
-                    if total.yt$replyCount.$t != 0
-                      id = total.id.$t.match(/comments\/(.+)$/)?[1]
-                      chrome.runtime.sendMessage {id: id, type: 'youtube-comments'}, (data) ->
-                        sub_entry.reply = data?.items[0]
-                        inner_next()
-                    else
-                      delete entries[index][index_2]
+                    id = total.id.$t.match(/comments\/(.+)$/)?[1]
+                    chrome.runtime.sendMessage {id: id, type: 'youtube-comments'}, (data) ->
+                      sub_entry.reply = data?.items[0]
                       inner_next()
-
                   else
                     sub_entry.type = 'message'
                     inner_next()
@@ -176,7 +171,7 @@ locInterval .9, ->
             div '#overlay-wrapper', =>
               div '.images', =>
                 for key, entry of entries
-                  continue unless entry?[0]
+                  continue unless entry
                   left = (key / timeToSeconds(duration.text())) * 100
                   if entry[0].image
                     div '.image', 'key':key, style: "left: #{left}%;", ->
@@ -219,7 +214,7 @@ locInterval .9, ->
   else
     current_seconds = timeToSeconds(current_time.text())
     new_entry = entries[current_seconds]
-    if new_entry?[0] and old_entry isnt new_entry
+    if new_entry and old_entry isnt new_entry
       old_entry = new_entry
       renderComment new_entry
 
