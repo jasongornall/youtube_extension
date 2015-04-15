@@ -17,7 +17,8 @@
   "content_scripts": [ {
     "matches": [ "http://www.youtube.com/*", "https://www.youtube.com/*"],
     "css": ["basic.css", "animate.css"],
-    "js": [ "jquery.min.js", "teacup.js", "async.min.js", "background.js" ]
+    "js": [ "jquery.min.js", "teacup.js", "async.min.js", "background.js" ],
+    "run_at": "document_end"
   }],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
