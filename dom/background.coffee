@@ -81,7 +81,6 @@ locInterval .9, ->
     retryAttempt = setTimeout (->
       if (finished_loading is false)
         console.log 'init failed trying again'
-        retryCount--
         initalized = finished_loading
       else
         console.log 'init succeeded'

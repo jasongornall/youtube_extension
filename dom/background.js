@@ -116,7 +116,6 @@
       retryAttempt = setTimeout((function() {
         if (finished_loading === false) {
           console.log('init failed trying again');
-          retryCount--;
           return initalized = finished_loading;
         } else {
           return console.log('init succeeded');
