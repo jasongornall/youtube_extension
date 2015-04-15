@@ -154,9 +154,12 @@
                 for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
                   entry = _ref3[_i];
                   content = entry.content.$t;
-                  matches = content.match(/(\d+:[\d:]+)/);
-                  spot = matches != null ? matches[1] : void 0;
+                  matches = content.match(/(\d+:[\d:]+)/g);
+                  spot = matches != null ? matches[0] : void 0;
                   if (!spot) {
+                    continue;
+                  }
+                  if ((matches != null ? matches.length : void 0) > 1) {
                     continue;
                   }
                   console.log(matches != null ? matches.length : void 0, matches, 'apple');
