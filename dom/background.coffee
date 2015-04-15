@@ -139,7 +139,7 @@ locInterval .9, ->
               # fix image and get the best reply to questions
               async.parallel {
                 reply: (inner_next) ->
-                  if /\?|song/gi.test(text)
+                  if /\?|song|music|/gi.test(text)
                     sub_entry.type = 'reply'
                     if total.yt$replyCount.$t != 0
                       id = total.id.$t.match(/comments\/(.+)$/)?[1]

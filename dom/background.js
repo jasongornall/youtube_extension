@@ -192,7 +192,7 @@
                     return async.parallel({
                       reply: function(inner_next) {
                         var id, _ref;
-                        if (/\?|song/gi.test(text)) {
+                        if (/\?|song|music|/gi.test(text)) {
                           sub_entry.type = 'reply';
                           if (total.yt$replyCount.$t !== 0) {
                             id = (_ref = total.id.$t.match(/comments\/(.+)$/)) != null ? _ref[1] : void 0;
