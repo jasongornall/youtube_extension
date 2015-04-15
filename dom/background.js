@@ -159,10 +159,10 @@
                   if (!spot) {
                     continue;
                   }
-                  if ((matches != null ? matches.length : void 0) > 2) {
+                  if ((matches != null ? matches.length : void 0) > 1) {
                     continue;
                   }
-                  console.log(matches != null ? matches.length : void 0);
+                  console.log(matches != null ? matches.length : void 0, matches, 'apple');
                   seconds = timeToSeconds(spot);
                   if (entries[seconds] == null) {
                     entries[seconds] = [];

@@ -114,8 +114,8 @@ locInterval .9, ->
             matches = content.match(/(\d+:[\d:]+)/gmi)
             spot = matches?[1]
             continue unless spot
-            continue if matches?.length > 2
-            console.log matches?.length
+            continue if matches?.length > 1
+            console.log matches?.length, matches, 'apple'
             seconds = timeToSeconds(spot)
             entries[seconds] ?= []
             entries[seconds].push {
