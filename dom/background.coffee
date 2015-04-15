@@ -111,10 +111,10 @@ locInterval .9, ->
           return next() unless data?.feed?.entry?.length
           for entry in data?.feed?.entry
             content = entry.content.$t
-            matches = content.match(/(\d+:[\d:]+)/)
+            matches = content.match(/(\d+:[\d:]+)/m)
             spot = matches?[1]
             continue unless spot
-            console.log matches?.length, matches, 'apple'
+            continue if matches?.length > 2
             seconds = timeToSeconds(spot)
             entries[seconds] ?= []
             entries[seconds].push {

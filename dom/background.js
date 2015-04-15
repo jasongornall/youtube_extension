@@ -154,12 +154,14 @@
                 for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
                   entry = _ref3[_i];
                   content = entry.content.$t;
-                  matches = content.match(/(\d+:[\d:]+)/);
+                  matches = content.match(/(\d+:[\d:]+)/m);
                   spot = matches != null ? matches[1] : void 0;
                   if (!spot) {
                     continue;
                   }
-                  console.log(matches != null ? matches.length : void 0, matches, 'apple');
+                  if ((matches != null ? matches.length : void 0) > 2) {
+                    continue;
+                  }
                   seconds = timeToSeconds(spot);
                   if (entries[seconds] == null) {
                     entries[seconds] = [];
