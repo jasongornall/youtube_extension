@@ -196,7 +196,6 @@ locInterval .9, ->
             $hover.html commentTemplate(data)
             $hover.siblings('.comment').hide()
 
-
           $image.mouseleave (e) ->
             $el = $ e.currentTarget
             $hover = $el.closest('#overlay-wrapper').find('.hover-comment')

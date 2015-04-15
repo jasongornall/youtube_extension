@@ -47,19 +47,16 @@ html.youtube-social #player-api #overlay-wrapper .hover-comment:empty,
 html.youtube-social #player-api #overlay-wrapper .comment:empty {
   display: none !important;
 }
-html.youtube-social #player-api #overlay-wrapper .hover-comment,
-html.youtube-social #player-api #overlay-wrapper .comment {
-  position: relative;
-  z-index: 100000;
-  box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.2);
-  background: #fff;
-}
 html.youtube-social #player-api #overlay-wrapper .hover-comment > div,
 html.youtube-social #player-api #overlay-wrapper .comment > div {
   padding: 5px;
   margin: 5px;
   display: inline-block;
   text-align: left;
+  background: #fff;
+  position: relative;
+  z-index: 100000;
+  box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.2);
   background: #fff;
 }
 html.youtube-social #player-api #overlay-wrapper .hover-comment > div div,
