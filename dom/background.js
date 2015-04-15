@@ -285,7 +285,6 @@
               $image.mouseenter(function(e) {
                 var $el, $hover, data;
                 $el = $(e.currentTarget);
-                console.log($el.attr('key'), "THIS IS THE KEY");
                 data = entries[$el.attr('key')];
                 $hover = $el.closest('#overlay-wrapper').find('.hover-comment');
                 $hover.html(commentTemplate(data));

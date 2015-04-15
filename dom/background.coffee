@@ -191,7 +191,6 @@ locInterval .9, ->
           $image = $("#player-api #overlay-wrapper .images > .image")
           $image.mouseenter (e) ->
             $el = $ e.currentTarget
-            console.log $el.attr('key'), "THIS IS THE KEY"
             data = entries[$el.attr('key')]
             $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
             $hover.html commentTemplate(data)
