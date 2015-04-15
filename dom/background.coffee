@@ -111,10 +111,9 @@ locInterval .9, ->
           return next() unless data?.feed?.entry?.length
           for entry in data?.feed?.entry
             content = entry.content.$t
-            matches = content.match(/(\d+:[\d:]+)/gmi)
+            matches = content.match(/(\d+:[\d:]+)/)
             spot = matches?[1]
             continue unless spot
-            continue if matches?.length > 1
             console.log matches?.length, matches, 'apple'
             seconds = timeToSeconds(spot)
             entries[seconds] ?= []
@@ -140,12 +139,17 @@ locInterval .9, ->
               # fix image and get the best reply to questions
               async.parallel {
                 reply: (inner_next) ->
-                  if /\?|song/gi.test(text) and total.yt$replyCount.$t != 0
-                    id = total.id.$t.match(/comments\/(.+)$/)?[1]
+                  if /\?|song/gi.test(text)
                     sub_entry.type = 'reply'
-                    chrome.runtime.sendMessage {id: id, type: 'youtube-comments'}, (data) ->
-                      sub_entry.reply = data?.items[0]
+                    if total.yt$replyCount.$t != 0
+                      id = total.id.$t.match(/comments\/(.+)$/)?[1]
+                      chrome.runtime.sendMessage {id: id, type: 'youtube-comments'}, (data) ->
+                        sub_entry.reply = data?.items[0]
+                        inner_next()
+                    else
+                      delete entries[index]
                       inner_next()
+
                   else
                     sub_entry.type = 'message'
                     inner_next()
@@ -172,6 +176,7 @@ locInterval .9, ->
             div '#overlay-wrapper', =>
               div '.images', =>
                 for key, entry of entries
+                  continue unless entry
                   left = (key / timeToSeconds(duration.text())) * 100
                   if entry[0].image
                     div '.image', 'key':key, style: "left: #{left}%;", ->

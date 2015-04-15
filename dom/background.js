@@ -154,12 +154,9 @@
                 for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
                   entry = _ref3[_i];
                   content = entry.content.$t;
-                  matches = content.match(/(\d+:[\d:]+)/gmi);
+                  matches = content.match(/(\d+:[\d:]+)/);
                   spot = matches != null ? matches[1] : void 0;
                   if (!spot) {
-                    continue;
-                  }
-                  if ((matches != null ? matches.length : void 0) > 1) {
                     continue;
                   }
                   console.log(matches != null ? matches.length : void 0, matches, 'apple');
@@ -193,16 +190,21 @@
                     return async.parallel({
                       reply: function(inner_next) {
                         var id, _ref;
-                        if (/\?|song/gi.test(text) && total.yt$replyCount.$t !== 0) {
-                          id = (_ref = total.id.$t.match(/comments\/(.+)$/)) != null ? _ref[1] : void 0;
+                        if (/\?|song/gi.test(text)) {
                           sub_entry.type = 'reply';
-                          return chrome.runtime.sendMessage({
-                            id: id,
-                            type: 'youtube-comments'
-                          }, function(data) {
-                            sub_entry.reply = data != null ? data.items[0] : void 0;
+                          if (total.yt$replyCount.$t !== 0) {
+                            id = (_ref = total.id.$t.match(/comments\/(.+)$/)) != null ? _ref[1] : void 0;
+                            return chrome.runtime.sendMessage({
+                              id: id,
+                              type: 'youtube-comments'
+                            }, function(data) {
+                              sub_entry.reply = data != null ? data.items[0] : void 0;
+                              return inner_next();
+                            });
+                          } else {
+                            delete entries[index];
                             return inner_next();
-                          });
+                          }
                         } else {
                           sub_entry.type = 'message';
                           return inner_next();
@@ -245,6 +247,9 @@
                       _results = [];
                       for (key in entries) {
                         entry = entries[key];
+                        if (!entry) {
+                          continue;
+                        }
                         left = (key / timeToSeconds(duration.text())) * 100;
                         if (entry[0].image) {
                           _results.push(div('.image', {
