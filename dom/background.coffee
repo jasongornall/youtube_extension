@@ -42,7 +42,6 @@ commentTemplate = (data) =>
   )
 timeoutID = null
 renderComment = (data) =>
-  console.log 'render', data
   $comment = $("#player-api > #overlay-wrapper .comment")
   $comment.html commentTemplate data
   clearTimeout timeoutID if timeoutID
@@ -91,7 +90,6 @@ locInterval .9, ->
     $("#player-api > #overlay-wrapper").remove()
     $('html').removeClass('youtube-social')
     initalized = true
-    console.log 'INITIALIZED'
     main_video_id = youtube_video.exec(window.location.href)[4]
 
     getComments = (num = 368) =>
@@ -107,7 +105,6 @@ locInterval .9, ->
 
       entries = []
       async.each calls, ((call, next) ->
-        console.log call
         $.getJSON call, (data) =>
           return next() unless data?.feed?.entry?.length
           for entry in data?.feed?.entry
@@ -166,7 +163,6 @@ locInterval .9, ->
             outer_next()
         ), (err, finish) ->
           finished_loading = true
-          console.log entries, 'entries'
           $("#player-api > #overlay-wrapper").remove()
           $("#player-api").append teacup.render ( =>
             div '#overlay-wrapper', =>

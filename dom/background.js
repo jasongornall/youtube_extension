@@ -70,7 +70,6 @@
   renderComment = (function(_this) {
     return function(data) {
       var $comment;
-      console.log('render', data);
       $comment = $("#player-api > #overlay-wrapper .comment");
       $comment.html(commentTemplate(data));
       if (timeoutID) {
@@ -132,7 +131,6 @@
       $("#player-api > #overlay-wrapper").remove();
       $('html').removeClass('youtube-social');
       initalized = true;
-      console.log('INITIALIZED');
       main_video_id = youtube_video.exec(window.location.href)[4];
       getComments = (function(_this) {
         return function(num) {
@@ -150,7 +148,6 @@
           }
           entries = [];
           return async.each(calls, (function(call, next) {
-            console.log(call);
             return $.getJSON(call, (function(_this) {
               return function(data) {
                 var content, entry, matches, seconds, spot, _i, _len, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
@@ -241,7 +238,6 @@
             }), function(err, finish) {
               var $image;
               finished_loading = true;
-              console.log(entries, 'entries');
               $("#player-api > #overlay-wrapper").remove();
               $("#player-api").append(teacup.render(((function(_this) {
                 return function() {

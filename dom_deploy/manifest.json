@@ -2,15 +2,11 @@
   "name": "jQuery DOM",
   "version": "1",
   "manifest_version": 2,
-  "description": "Manipulate the DOM when the page is done loading",
+  "description": "Change up youtube comments to have them come in on the fly",
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "icons": {
-    "128": "icon.png",
-    "48": "icon.png",
-    "16": "icon.png"
+    "name": "Manipulate DOM",
+    "icons": ["icon.png"],
+    "default_icon": "icon.png"
   },
   "permissions": [
     "http://*/",  "https://*/", "tabs"
@@ -21,8 +17,7 @@
   "content_scripts": [ {
     "matches": [ "http://www.youtube.com/*", "https://www.youtube.com/*"],
     "css": ["basic.css", "animate.css"],
-    "js": [ "jquery.min.js", "teacup.js", "async.min.js", "background.js" ],
-    "run_at": "document_end"
+    "js": [ "jquery.min.js", "teacup.js", "async.min.js", "background.js" ]
   }],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
