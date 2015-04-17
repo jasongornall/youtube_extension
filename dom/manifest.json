@@ -1,8 +1,8 @@
 {
-  "name": "U Comment",
-  "version": "1",
+  "name": "U Comment for Youtube™",
+  "version": "1.0.3",
   "manifest_version": 2,
-  "description": "Watch videos together and see comments occur as you watch",
+  "description": "Watch youtube vides and see comments occur as you watch",
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
