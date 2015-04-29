@@ -4,6 +4,9 @@
 html.youtube-social[data-player-size="small"] #watch7-sidebar {
   transform: translate(0, -49px);
 }
+html.youtube-social #placeholder-player {
+  margin-bottom: 49px;
+}
 html.youtube-social #player-api {
   margin-bottom: 49px;
 }
