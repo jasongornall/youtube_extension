@@ -5,7 +5,7 @@
 # get # comments
 # https://www.googleapis.com/youtube/v3/videos?part=statistics&id=sTPtBvcYkO8&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ
 # grab teacup
-
+console.log 'wakka2'
 teacup = window.window.teacup
 {span, div, a, h1, h3, p, iframe, raw, script, coffeescript, link, input, img} = teacup
 old_entry = null
@@ -33,12 +33,8 @@ timeToSeconds = (time) ->
 commentTemplate = (data) =>
   return teacup.render ( =>
     div '.animated fadeIn', ->
-      a '.name', href:"/channel/#{data[0]?.total?.yt$channelId?.$t}", -> "#{data[0]?.name}"
-      span '.description',-> data[0]?.text
-      if data[0]?.reply?.object?.content
-        div '.reply', ->
-          span '.name', -> "#{data[0]?.reply?.actor?.displayName}: "
-          span -> raw "#{data[0]?.reply?.object?.content}"
+      a '.name', href:"", -> "#{data?.name}"
+      span '.description', -> raw data.text
   )
 timeoutID = null
 renderComment = (data) =>
@@ -55,8 +51,8 @@ renderComment = (data) =>
 
 
 # bug here need a waiting script
-current_time = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-current')
-duration = $('#movie_player > div.html5-video-controls > div.html5-player-chrome > span > div.ytp-time-display.html5-control > span.ytp-time-duration')
+current_time = $('.ytp-time-current')
+duration = $('.ytp-time-duration')
 
 entries = []
 main_video_id = youtube_video.exec(window.location.href)[4]
@@ -67,9 +63,13 @@ finished_loading = false
 retryAttempt = null
 
 locInterval .9, ->
+  console.log 'WAKKA'
   return unless $("#player-api").length
+  console.log 'WAKKA 2'
   return unless duration.length
+  console.log 'WAKKA 3'
   return unless current_time.length
+  console.log 'WAKKA 4'
 
   # initilization
   video_id = youtube_video.exec(window.location.href)[4]
@@ -93,113 +93,80 @@ locInterval .9, ->
     main_video_id = youtube_video.exec(window.location.href)[4]
 
     getComments = (num = 368) =>
-      calls = []
-      count = 0
-      while num > 0
-        start_index = (count * 50) + 1
-        calls[count] = "https://gdata.youtube.com/feeds/api/videos/#{main_video_id}/comments?start-index=#{start_index}&max-results=50&alt=json"
-        num -= 50
-        count++
+      nextPageToken = null
+      calls = [ ]
+      for i in [0..20]
+        calls.push "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=100&videoId=#{main_video_id}&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ"
 
+      count = 20
+      async.eachSeries calls, ((call, next) ->
+        if nextPageToken
+          call += "&pageToken=#{nextPageToken}"
 
-
-      entries = []
-      async.each calls, ((call, next) ->
+        console.log 'CALL HAPPENED' + call
         $.getJSON call, (data) =>
-          return next() unless data?.feed?.entry?.length
-          for entry in data?.feed?.entry
-            content = entry.content.$t
+          return next() unless data?.items?.length
+          for entry in data?.items
+            content = entry.snippet.topLevelComment.snippet.textDisplay
             matches = content.match(/(\d+:[\d:]+)/g)
             spot = matches?[0]
             continue unless spot
             continue if matches?.length > 1
             seconds = timeToSeconds(spot)
-            entries[seconds] ?= []
-            entries[seconds].push {
-              text: entry.content?.$t
-              name: entry.author[0].name?.$t
-              image_link: entry.author[0]?.uri?.$t
+            entries[seconds] = {
+              text: content
+              name: entry.snippet.topLevelComment.snippet.authorDisplayName
+              image_link: entry.snippet.topLevelComment.snippet.authorProfileImageUrl
+              image: entry.snippet.topLevelComment.snippet.authorProfileImageUrl
               total: entry
             }
-
+          nextPageToken = data.nextPageToken
           next()
+
       ), (err, finish) ->
-        keys_1 = Object.keys(entries)
-        async.each keys_1, ((index, outer_next) ->
-          entry = entries[index]
+        console.log '3'
+        finished_loading = true
+        $("#player-api > #overlay-wrapper").remove()
+        $("#player-api").append teacup.render ( =>
+          div '#overlay-wrapper', =>
+            div '.images', =>
+              for key, entry of entries
+                continue unless entry
+                left = (key / timeToSeconds(duration.text())) * 100
+                if entry.image
+                  img_cls = '.image'
+                  if left > 100
+                    img_cls += '.wtf'
+                  div '.image', 'key':key, style: "left: #{left}%;", ->
+                    img src: "#{entry.image}"
+                    div '.image-hover', ->
+                      img src: "#{entry.image}"
+            div '.comment-wrapper', ->
+              div '.comment'
+              div '.hover-comment'
+        )
+        # only do this at the end
+        if entries.length
+          $('html').addClass('youtube-social')
+        else
+          $('html').removeClass('youtube-social')
+        $image = $("#player-api #overlay-wrapper .images > .image")
+        $image.mouseenter (e) ->
+          $el = $ e.currentTarget
+          data = entries[$el.attr('key')]
+          $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
+          $hover.html commentTemplate(data)
+          $hover.siblings('.comment').hide()
 
-          keys_2 = Object.keys(entry)
-          async.each keys_2, ((index_2, sub_next) ->
-            do =>
-              sub_entry = entries[index][index_2]
-              {name, text, image_link, total} = sub_entry
+        $image.mouseleave (e) ->
+          $el = $ e.currentTarget
+          $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
+          $fadeIn = $hover.find('.fadeIn')
+          $fadeIn.toggleClass('fadeIn fadeOut')
+          $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+            $(this).remove()
+            $hover.siblings('.comment').show()
 
-              # fix image and get the best reply to questions
-              async.parallel {
-                reply: (inner_next) ->
-                  if /\?|song/gi.test(text) and total.yt$replyCount.$t != 0
-                    sub_entry.type = 'reply'
-                    id = total.id.$t.match(/comments\/(.+)$/)?[1]
-                    chrome.runtime.sendMessage {id: id, type: 'youtube-comments'}, (data) ->
-                      sub_entry.reply = data?.items[0]
-                      inner_next()
-                  else
-                    sub_entry.type = 'message'
-                    inner_next()
-                image_fix: (inner_next) ->
-                  $.ajax {
-                    url: "#{image_link}?alt=json"
-                    dataType: 'json'
-                    success: (data) =>
-                      sub_entry.image = data?.entry?.media$thumbnail?.url
-                      inner_next()
-                    error: (data) ->
-                      inner_next()
-                  }
-              }, (err, results) ->
-                sub_next()
-
-          ), (err, finish) ->
-            outer_next()
-        ), (err, finish) ->
-          finished_loading = true
-          $("#player-api > #overlay-wrapper").remove()
-          $("#player-api").append teacup.render ( =>
-            div '#overlay-wrapper', =>
-              div '.images', =>
-                for key, entry of entries
-                  continue unless entry
-                  left = (key / timeToSeconds(duration.text())) * 100
-                  if entry[0].image
-                    div '.image', 'key':key, style: "left: #{left}%;", ->
-                      img src: "#{entry[0].image}"
-                      div '.image-hover', ->
-                        img src: "#{entry[0].image}"
-              div '.comment-wrapper', ->
-                div '.comment'
-                div '.hover-comment'
-          )
-          # only do this at the end
-          if keys_1.length
-            $('html').addClass('youtube-social')
-          else
-            $('html').removeClass('youtube-social')
-          $image = $("#player-api #overlay-wrapper .images > .image")
-          $image.mouseenter (e) ->
-            $el = $ e.currentTarget
-            data = entries[$el.attr('key')]
-            $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
-            $hover.html commentTemplate(data)
-            $hover.siblings('.comment').hide()
-
-          $image.mouseleave (e) ->
-            $el = $ e.currentTarget
-            $hover = $el.closest('#overlay-wrapper').find('.hover-comment')
-            $fadeIn = $hover.find('.fadeIn')
-            $fadeIn.toggleClass('fadeIn fadeOut')
-            $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-              $(this).remove()
-              $hover.siblings('.comment').show()
     chrome.runtime.sendMessage {id: main_video_id, type: 'youtube-stats'}, (data) ->
       comments = Math.max 1000, data?.items[0]?.statistics?.commentCount
       getComments()
