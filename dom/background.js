@@ -156,6 +156,7 @@
                     name: entry.snippet.topLevelComment.snippet.authorDisplayName,
                     image_link: entry.snippet.topLevelComment.snippet.authorProfileImageUrl,
                     image: entry.snippet.topLevelComment.snippet.authorProfileImageUrl,
+                    videoId: entry.snippet.videoId,
                     total: entry
                   };
                 }
@@ -176,6 +177,9 @@
                     for (key in entries) {
                       entry = entries[key];
                       if (!entry) {
+                        continue;
+                      }
+                      if (entry.videoId !== main_video_id) {
                         continue;
                       }
                       left = (key / duration) * 100;

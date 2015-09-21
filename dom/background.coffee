@@ -115,6 +115,7 @@ locInterval .9, ->
               name: entry.snippet.topLevelComment.snippet.authorDisplayName
               image_link: entry.snippet.topLevelComment.snippet.authorProfileImageUrl
               image: entry.snippet.topLevelComment.snippet.authorProfileImageUrl
+              videoId: entry.snippet.videoId
               total: entry
             }
           nextPageToken = data.nextPageToken
@@ -128,6 +129,7 @@ locInterval .9, ->
             div '.images', =>
               for key, entry of entries
                 continue unless entry
+                continue unless entry.videoId is main_video_id
                 left = (key / duration) * 100
                 if entry.image
                   img_cls = '.image'
