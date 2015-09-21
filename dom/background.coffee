@@ -5,7 +5,6 @@
 # get # comments
 # https://www.googleapis.com/youtube/v3/videos?part=statistics&id=sTPtBvcYkO8&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ
 # grab teacup
-console.log 'wakka2'
 teacup = window.window.teacup
 {span, div, a, h1, h3, p, iframe, raw, script, coffeescript, link, input, img} = teacup
 old_entry = null

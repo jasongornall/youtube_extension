@@ -2,8 +2,6 @@
 (function() {
   var a, coffeescript, commentTemplate, current_time, div, duration, entries, finished_loading, h1, h3, iframe, img, initalized, input, link, locInterval, main_video_id, old_entry, p, raw, renderComment, retryAttempt, script, span, teacup, timeToSeconds, timeoutID, youtube_video;
 
-  console.log('wakka2');
-
   teacup = window.window.teacup;
 
   span = teacup.span, div = teacup.div, a = teacup.a, h1 = teacup.h1, h3 = teacup.h3, p = teacup.p, iframe = teacup.iframe, raw = teacup.raw, script = teacup.script, coffeescript = teacup.coffeescript, link = teacup.link, input = teacup.input, img = teacup.img;
