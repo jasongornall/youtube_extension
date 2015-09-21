@@ -1,6 +1,6 @@
 {
   "name": "U Comment for Youtube™",
-  "version": "1.0.8",
+  "version": "1.1.8",
   "manifest_version": 2,
   "description": "Watch youtube vides and see comments occur as you watch",
   "browser_action": {

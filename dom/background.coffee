@@ -22,7 +22,6 @@ locInterval = (time, next) ->
 
 timeToSeconds = (time) ->
   seconds = 0
-  debugger;
   elements = time.split(':').reverse()
   seconds += parseInt(elements[0]) if elements[0]
   seconds += parseInt(elements[1]) * 60 if elements[1]
@@ -102,7 +101,6 @@ locInterval .9, ->
         if nextPageToken
           call += "&pageToken=#{nextPageToken}"
 
-        console.log  'CALL HAPPENED'
         $.getJSON call, (data) =>
           return next() unless data?.items?.length
           for entry in data?.items

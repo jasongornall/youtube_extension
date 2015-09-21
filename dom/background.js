@@ -19,7 +19,6 @@
   timeToSeconds = function(time) {
     var elements, seconds;
     seconds = 0;
-    debugger;
     elements = time.split(':').reverse();
     if (elements[0]) {
       seconds += parseInt(elements[0]);
@@ -133,7 +132,6 @@
             if (nextPageToken) {
               call += "&pageToken=" + nextPageToken;
             }
-            console.log('CALL HAPPENED');
             return $.getJSON(call, (function(_this) {
               return function(data) {
                 var content, entry, matches, seconds, spot, _j, _len, _ref, _ref1;
