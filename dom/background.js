@@ -243,7 +243,7 @@
       call = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=" + main_video_id + "&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ";
       return $.getJSON(call, (function(_this) {
         return function(data) {
-          var YTDurationToSeconds;
+          var YTDurationToSeconds, _ref, _ref1, _ref2;
           YTDurationToSeconds = function(dur) {
             var hours, match, minutes, seconds;
             match = dur.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
@@ -252,13 +252,15 @@
             seconds = parseInt(match[3]) || 0;
             return hours * 3600 + minutes * 60 + seconds;
           };
-          duration = YTDurationToSeconds(data.items[0].contentDetails.duration);
-          return getComments();
+          duration = YTDurationToSeconds(data != null ? (_ref = data.items) != null ? (_ref1 = _ref[0]) != null ? (_ref2 = _ref1.contentDetails) != null ? _ref2.duration : void 0 : void 0 : void 0 : void 0);
+          if (duration) {
+            return getComments();
+          }
         };
       })(this));
     } else {
       current_seconds = Math.floor(current_time[0].currentTime);
-      if ($('.ad-showing').length) {
+      if ($('.videoAdUiBottomBar').length) {
         current_seconds = 0;
       }
       new_entry = entries[current_seconds];

@@ -171,14 +171,15 @@ locInterval .9, ->
         minutes = parseInt(match[2]) or 0
         seconds = parseInt(match[3]) or 0
         hours * 3600 + minutes * 60 + seconds
-      duration = YTDurationToSeconds data.items[0].contentDetails.duration
-      getComments()
+      duration = YTDurationToSeconds data?.items?[0]?.contentDetails?.duration
+      if duration
+        getComments()
 
 
 
   else
     current_seconds = Math.floor(current_time[0].currentTime)
-    current_seconds = 0 if $('.ad-showing').length
+    current_seconds = 0 if $('.videoAdUiBottomBar').length
     new_entry = entries[current_seconds]
     if new_entry and old_entry isnt new_entry
       old_entry = new_entry
