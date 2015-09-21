@@ -11,15 +11,19 @@ html.youtube-social
     #overlay-wrapper
       position relative
       width 100%
+      box-sizing border-box
+      padding 0 13px
       text-align center
       .comment-wrapper
         font-size 15px
       .images
         height 10px
-        margin 0 13px
+        position relative
         .image
           display inline-block
           position absolute
+          &.too-far
+            display none
           &:hover
             .image-hover
               display block

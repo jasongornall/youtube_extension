@@ -13,6 +13,8 @@ html.youtube-social #player-api {
 html.youtube-social #player-api #overlay-wrapper {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 13px;
   text-align: center;
 }
 html.youtube-social #player-api #overlay-wrapper .comment-wrapper {
@@ -20,11 +22,14 @@ html.youtube-social #player-api #overlay-wrapper .comment-wrapper {
 }
 html.youtube-social #player-api #overlay-wrapper .images {
   height: 10px;
-  margin: 0 13px;
+  position: relative;
 }
 html.youtube-social #player-api #overlay-wrapper .images .image {
   display: inline-block;
   position: absolute;
+}
+html.youtube-social #player-api #overlay-wrapper .images .image.too-far {
+  display: none;
 }
 html.youtube-social #player-api #overlay-wrapper .images .image:hover .image-hover {
   display: block;

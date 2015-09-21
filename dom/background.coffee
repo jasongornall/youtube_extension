@@ -22,6 +22,7 @@ locInterval = (time, next) ->
 
 timeToSeconds = (time) ->
   seconds = 0
+  debugger;
   elements = time.split(':').reverse()
   seconds += parseInt(elements[0]) if elements[0]
   seconds += parseInt(elements[1]) * 60 if elements[1]
@@ -51,8 +52,8 @@ renderComment = (data) =>
 
 
 # bug here need a waiting script
-current_time = $('.ytp-time-current')
-duration = $('.ytp-time-duration')
+current_time = $('#movie_player > div.html5-video-container > video')
+duration = null
 
 entries = []
 main_video_id = youtube_video.exec(window.location.href)[4]
@@ -63,13 +64,8 @@ finished_loading = false
 retryAttempt = null
 
 locInterval .9, ->
-  console.log 'WAKKA'
   return unless $("#player-api").length
-  console.log 'WAKKA 2'
-  return unless duration.length
-  console.log 'WAKKA 3'
   return unless current_time.length
-  console.log 'WAKKA 4'
 
   # initilization
   video_id = youtube_video.exec(window.location.href)[4]
@@ -89,21 +85,24 @@ locInterval .9, ->
 
     $("#player-api > #overlay-wrapper").remove()
     $('html').removeClass('youtube-social')
-    initalized = true
     main_video_id = youtube_video.exec(window.location.href)[4]
+    return unless main_video_id
+    initalized = true
 
-    getComments = (num = 368) =>
+    getComments = (num) =>
+      entries = []
       nextPageToken = null
       calls = [ ]
-      for i in [0..20]
-        calls.push "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=100&videoId=#{main_video_id}&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ"
+      for i in [0..5]
+        calls.push "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&order=relevance&maxResults=100&videoId=#{main_video_id}&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ"
 
-      count = 20
       async.eachSeries calls, ((call, next) ->
+
+
         if nextPageToken
           call += "&pageToken=#{nextPageToken}"
 
-        console.log 'CALL HAPPENED' + call
+        console.log  'CALL HAPPENED'
         $.getJSON call, (data) =>
           return next() unless data?.items?.length
           for entry in data?.items
@@ -124,7 +123,6 @@ locInterval .9, ->
           next()
 
       ), (err, finish) ->
-        console.log '3'
         finished_loading = true
         $("#player-api > #overlay-wrapper").remove()
         $("#player-api").append teacup.render ( =>
@@ -132,12 +130,12 @@ locInterval .9, ->
             div '.images', =>
               for key, entry of entries
                 continue unless entry
-                left = (key / timeToSeconds(duration.text())) * 100
+                left = (key / duration) * 100
                 if entry.image
                   img_cls = '.image'
                   if left > 100
-                    img_cls += '.wtf'
-                  div '.image', 'key':key, style: "left: #{left}%;", ->
+                    img_cls += '.too-far'
+                  div img_cls, 'key':key, style: "left: #{left}%;", ->
                     img src: "#{entry.image}"
                     div '.image-hover', ->
                       img src: "#{entry.image}"
@@ -166,15 +164,22 @@ locInterval .9, ->
           $fadeIn.one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
             $(this).remove()
             $hover.siblings('.comment').show()
-
-    chrome.runtime.sendMessage {id: main_video_id, type: 'youtube-stats'}, (data) ->
-      comments = Math.max 1000, data?.items[0]?.statistics?.commentCount
+    call = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=#{main_video_id}&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ"
+    $.getJSON call, (data) =>
+      YTDurationToSeconds = (dur) ->
+        match = dur.match(/PT(\d+H)?(\d+M)?(\d+S)?/)
+        hours = parseInt(match[1]) or 0
+        minutes = parseInt(match[2]) or 0
+        seconds = parseInt(match[3]) or 0
+        hours * 3600 + minutes * 60 + seconds
+      duration = YTDurationToSeconds data.items[0].contentDetails.duration
       getComments()
 
 
 
   else
-    current_seconds = timeToSeconds(current_time.text())
+    current_seconds = Math.floor(current_time[0].currentTime)
+    current_seconds = 0 if $('.ad-showing').length
     new_entry = entries[current_seconds]
     if new_entry and old_entry isnt new_entry
       old_entry = new_entry

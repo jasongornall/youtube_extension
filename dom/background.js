@@ -19,6 +19,7 @@
   timeToSeconds = function(time) {
     var elements, seconds;
     seconds = 0;
+    debugger;
     elements = time.split(':').reverse();
     if (elements[0]) {
       seconds += parseInt(elements[0]);
@@ -74,9 +75,9 @@
     };
   })(this);
 
-  current_time = $('.ytp-time-current');
+  current_time = $('#movie_player > div.html5-video-container > video');
 
-  duration = $('.ytp-time-duration');
+  duration = null;
 
   entries = [];
 
@@ -89,20 +90,13 @@
   retryAttempt = null;
 
   locInterval(.9, function() {
-    var current_seconds, getComments, new_entry, video_id;
-    console.log('WAKKA');
+    var call, current_seconds, getComments, new_entry, video_id;
     if (!$("#player-api").length) {
       return;
     }
-    console.log('WAKKA 2');
-    if (!duration.length) {
-      return;
-    }
-    console.log('WAKKA 3');
     if (!current_time.length) {
       return;
     }
-    console.log('WAKKA 4');
     video_id = youtube_video.exec(window.location.href)[4];
     if (video_id !== main_video_id) {
       initalized = false;
@@ -121,25 +115,25 @@
       }), 8000);
       $("#player-api > #overlay-wrapper").remove();
       $('html').removeClass('youtube-social');
-      initalized = true;
       main_video_id = youtube_video.exec(window.location.href)[4];
+      if (!main_video_id) {
+        return;
+      }
+      initalized = true;
       getComments = (function(_this) {
         return function(num) {
-          var calls, count, i, nextPageToken, _i;
-          if (num == null) {
-            num = 368;
-          }
+          var calls, i, nextPageToken, _i;
+          entries = [];
           nextPageToken = null;
           calls = [];
-          for (i = _i = 0; _i <= 20; i = ++_i) {
-            calls.push("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=100&videoId=" + main_video_id + "&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ");
+          for (i = _i = 0; _i <= 5; i = ++_i) {
+            calls.push("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&order=relevance&maxResults=100&videoId=" + main_video_id + "&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ");
           }
-          count = 20;
           return async.eachSeries(calls, (function(call, next) {
             if (nextPageToken) {
               call += "&pageToken=" + nextPageToken;
             }
-            console.log('CALL HAPPENED' + call);
+            console.log('CALL HAPPENED');
             return $.getJSON(call, (function(_this) {
               return function(data) {
                 var content, entry, matches, seconds, spot, _j, _len, _ref, _ref1;
@@ -173,7 +167,6 @@
             })(this));
           }), function(err, finish) {
             var $image;
-            console.log('3');
             finished_loading = true;
             $("#player-api > #overlay-wrapper").remove();
             $("#player-api").append(teacup.render(((function(_this) {
@@ -187,13 +180,13 @@
                       if (!entry) {
                         continue;
                       }
-                      left = (key / timeToSeconds(duration.text())) * 100;
+                      left = (key / duration) * 100;
                       if (entry.image) {
                         img_cls = '.image';
                         if (left > 100) {
-                          img_cls += '.wtf';
+                          img_cls += '.too-far';
                         }
-                        _results.push(div('.image', {
+                        _results.push(div(img_cls, {
                           'key': key,
                           style: "left: " + left + "%;"
                         }, function() {
@@ -247,16 +240,27 @@
           });
         };
       })(this);
-      return chrome.runtime.sendMessage({
-        id: main_video_id,
-        type: 'youtube-stats'
-      }, function(data) {
-        var comments, _ref, _ref1;
-        comments = Math.max(1000, data != null ? (_ref = data.items[0]) != null ? (_ref1 = _ref.statistics) != null ? _ref1.commentCount : void 0 : void 0 : void 0);
-        return getComments();
-      });
+      call = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=" + main_video_id + "&key=AIzaSyCOgZXFd0wj49anj5THC0bJva_oNjaBilQ";
+      return $.getJSON(call, (function(_this) {
+        return function(data) {
+          var YTDurationToSeconds;
+          YTDurationToSeconds = function(dur) {
+            var hours, match, minutes, seconds;
+            match = dur.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+            hours = parseInt(match[1]) || 0;
+            minutes = parseInt(match[2]) || 0;
+            seconds = parseInt(match[3]) || 0;
+            return hours * 3600 + minutes * 60 + seconds;
+          };
+          duration = YTDurationToSeconds(data.items[0].contentDetails.duration);
+          return getComments();
+        };
+      })(this));
     } else {
-      current_seconds = timeToSeconds(current_time.text());
+      current_seconds = Math.floor(current_time[0].currentTime);
+      if ($('.ad-showing').length) {
+        current_seconds = 0;
+      }
       new_entry = entries[current_seconds];
       if (new_entry && old_entry !== new_entry) {
         old_entry = new_entry;
